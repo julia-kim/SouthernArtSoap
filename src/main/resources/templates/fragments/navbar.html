@@ -1,0 +1,22 @@
+<nav class="row navbar navbar-dark navbar-custom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="">
+              <i class="fas fa-soap"></i> Southern Art Soap</a> <!-- need to add class to change alignment  -->
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">New Tweet</a></li>
+                <li><a href="#">Tags</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li sec:authorize="isAuthenticated()"><a style="pointer-events: none;">
+                        <span sec:authentication="name"></span></a>
+                <li sec:authorize="isAuthenticated()"><a href="../logout">Logout</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="../login">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

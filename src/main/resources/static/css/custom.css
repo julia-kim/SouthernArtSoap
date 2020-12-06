@@ -1,0 +1,11 @@
+.navbar-custom {
+    background-color: grey;
+
+}
+
+body {
+    color: red;
+    background-color: green;
+}
+
+/* boostrap overrides */
