@@ -1,29 +1,92 @@
-/* boostrap tweaks */
+/* COLORS
+	- JUICY STRAWBERRY	 #C31644
+	- STRAWBERRY GELATO	 #EE7B71
+	- STRAWBERRY CREAM 	 #F9BDB5
+	- VANILLA 			     #F7E3C7
+	- CHOCOLATE CREAM  	 #B48967
+	- CHOCOLATE GANACHE  #432B27
+*/
 
-#navbar-custom {
-    background-color: grey;
-/*    color: red;
-    a{
-        color: red;
-    }   doesn't override bootstrap styling on the <a> tags for some reason' */
+/* FONTS
+	- DEFAULT/BODY  Raleway, sans-serif
+  - BRAND         Elsie Swash Caps, cursive;
+  - HEADINGS      Playfair Display, serif
+*/
+
+/* === GLOBAL SETTINGS === */
+*,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-link {
-    color: black;
+body {
+	background-color: #fff;
+  font-family: "Raleway", sans-serif;
+  height: 100vh;
 }
 
-#navbar-search{
-    margin-top: 5px;
+/* === NAVBAR === */
+.navbar {
+  background-color: #c31644;
+  border-radius: 0;
 }
 
-.navbar-nav.navbar-center {
-    position: absolute;
+.navbar-top {
+	background-color: #fff;
+	height:  6.875rem;
+}
+.navbar-top a {
+	color: #C31644;
+}
+
+.navbar-brand {
+  font-family: 'Elsie Swash Caps', cursive;
+  font-size: 3.5em;
+  color: #fff;
     left: 50%;
-    transform: translatex(-50%);
+  position: absolute;
+  transform: translateX(-50%);
 }
 
-body{
-    margin-left: 2%;
-    margin-right: 2%;
+.navbar-brand:hover {
+	color: #C31644;
 }
 
+.nav-link {
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+.nav-link:hover {
+  color: #f9bdb5;
+}
+
+/* === SHOPPING CART === */
+.img-thumbnail {
+  height: 72px;
+  object-fit: contain;
+  width: 72px;
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: #c31644;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.031em;
+  padding: 3em 3.125%;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.social-media-icon {
+  font-size: 2em;
+  padding-left: 0.5rem;
+}
