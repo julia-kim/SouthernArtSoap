@@ -1,0 +1,29 @@
+/* boostrap tweaks */
+
+#navbar-custom {
+    background-color: grey;
+/*    color: red;
+    a{
+        color: red;
+    }   doesn't override bootstrap styling on the <a> tags for some reason' */
+}
+
+.navbar-link {
+    color: black;
+}
+
+#navbar-search{
+    margin-top: 5px;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+body{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
