@@ -16,6 +16,12 @@
     margin-top: 5px;
 }
 
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
 body{
     margin-left: 2%;
     margin-right: 2%;
