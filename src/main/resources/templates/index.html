@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title th:text="${title}"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/> 
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css" media="all"/>
+    <title>Southern Art Soap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <div th:replace="fragments/head"></div>
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg border-bottom">
-        <a class="navbar-brand" th:href="@{/}">SouthernArtSoap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
-          </ul>
-        </div>
-      </nav>
+      <div th:replace="fragments/navbar"></div>
       <div class="jumbotron text-right">
         <h1>Welcome to Southern Art Soap</h1>
       </div>
       <div class="container">
         <div class="introduction">
           <h2>Welcome</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque urna tempus velit interdum pulvinar. Vivamus ultricies urna nulla, in lacinia turpis maximus et. Aenean malesuada libero vitae congue feugiat. Curabitur dignissim congue magna, sed scelerisque neque aliquet in. Nullam iaculis est ante, eget facilisis mauris congue in. Sed id sem volutpat, aliquet ligula sed, iaculis eros. Fusce in diam pulvinar, congue diam sit amet, condimentum dolor. Praesent at diam justo. Nunc consectetur eu tellus quis fringilla. </p>
-          <p>Vestibulum turpis leo, hendrerit at feugiat id, rutrum sit amet justo. Maecenas mauris nibh, aliquam ut nisl id, condimentum tempor turpis. Curabitur velit lacus, cursus sit amet nisl ac, rutrum ullamcorper eros. Nam turpis turpis, ullamcorper vestibulum justo pretium, eleifend auctor massa. Praesent eget mauris placerat, tincidunt magna a, tincidunt enim. Fusce feugiat leo id maximus eleifend. Fusce est ex, convallis vel pretium in, vehicula et dolor. Pellentesque sit amet interdum purus. </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque urna tempus velit interdum pulvinar. Vivamus ultricies urna
+            nulla, in lacinia turpis maximus et. Aenean malesuada libero vitae congue feugiat. Curabitur dignissim congue magna, sed scelerisque neque
+            aliquet in. Nullam iaculis est ante, eget facilisis mauris congue in. Sed id sem volutpat, aliquet ligula sed, iaculis eros. Fusce in diam
+            pulvinar, congue diam sit amet, condimentum dolor. Praesent at diam justo. Nunc consectetur eu tellus quis fringilla.
+          </p>
+          <p>
+            Vestibulum turpis leo, hendrerit at feugiat id, rutrum sit amet justo. Maecenas mauris nibh, aliquam ut nisl id, condimentum tempor
+            turpis. Curabitur velit lacus, cursus sit amet nisl ac, rutrum ullamcorper eros. Nam turpis turpis, ullamcorper vestibulum justo pretium,
+            eleifend auctor massa. Praesent eget mauris placerat, tincidunt magna a, tincidunt enim. Fusce feugiat leo id maximus eleifend. Fusce est
+            ex, convallis vel pretium in, vehicula et dolor. Pellentesque sit amet interdum purus.
+          </p>
         </div>
         <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card" style="width: 18rem">
+            <img class="card-img-top" src="..." alt="Card image cap" />
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card" style="width: 18rem">
+            <img class="card-img-top" src="..." alt="Card image cap" />
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card" style="width: 18rem">
+            <img class="card-img-top" src="..." alt="Card image cap" />
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -59,11 +55,9 @@
         </div>
       </div>
     </header>
-    <footer class="footer">
-
-    </footer>
-     <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
-     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
-     <script th:src="@{/js/custom.js}" type="text/javascript"></script>
+    <div th:replace="fragments/footer"></div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/custom.js}" type="text/javascript"></script>
   </body>
 </html>
