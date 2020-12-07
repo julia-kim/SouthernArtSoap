@@ -22,9 +22,34 @@ html {
 }
 
 body {
-	background-color: #fff;
+  background-color: #fff;
   font-family: "Raleway", sans-serif;
   height: 100vh;
+}
+
+.container,
+.container-fluid {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.hero {
+  background-image: url("../img/isbl_1680x420.36780233_89m48x0x.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+}
+
+/* === TYPOGRAPHY === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-family: Playfair Display, serif;
 }
 
 /* === NAVBAR === */
@@ -34,24 +59,24 @@ body {
 }
 
 .navbar-top {
-	background-color: #fff;
-	height:  6.875rem;
+  background-color: #fff;
+  height: 6.875rem;
 }
 .navbar-top a {
-	color: #C31644;
+  color: #c31644;
 }
 
 .navbar-brand {
-  font-family: 'Elsie Swash Caps', cursive;
+  font-family: "Elsie Swash Caps", cursive;
   font-size: 3.5em;
   color: #fff;
-    left: 50%;
+  left: 50%;
   position: absolute;
   transform: translateX(-50%);
 }
 
 .navbar-brand:hover {
-	color: #C31644;
+  color: #c31644;
 }
 
 .nav-link {
@@ -60,7 +85,6 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
 
 .nav-link:hover {
   color: #f9bdb5;
