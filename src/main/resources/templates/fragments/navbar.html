@@ -1,35 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-top">
-  <a class="navbar-brand" href="/">Southern Art Soap</a>
+<header class="shadow">
+  <nav class="navbar navbar-expand-lg navbar-top">
+    <a class="navbar-brand" href="/">Southern Art Soap</a>
 
-  <ul class="navbar-nav mr-auto">
-    <!--  search bar  -->
-    <li class="nav-item">
-      <form class="form-inline">
-        <div class="input-group">
-          <input id="navbar-search" class="form-control" type="text" placeholder="Search" aria-label="Search" />
-          <button class="btn" type="button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </form>
-    </li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a href="../cart" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-expand-lg">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item"><a href="../shop" class="nav-link">Shop</a></li>
-  </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item" sec:authorize="isAuthenticated()">
-      <a style="pointer-events: none" class="nav-link"> <span sec:authentication="name"></span></a>
-    </li>
-    <li class="nav-item" sec:authorize="isAuthenticated()"><a href="../logout" class="nav-link">Logout</a></li>
-    <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="../login" class="nav-link">Login</a></li>
-    <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="../signup" class="nav-link">Signup</a></li>
-  </ul>
-</nav>
+    <ul class="navbar-nav mr-auto">
+      <!--  search bar  -->
+      <li class="nav-item">
+        <form class="form-inline">
+          <div class="input-group">
+            <input id="navbar-search" class="form-control" type="text" placeholder="Search" aria-label="Search" />
+            <button class="btn" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="../cart" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a href="../shop" class="nav-link">Shop</a></li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a style="pointer-events: none" class="nav-link"> <span sec:authentication="name"></span></a>
+      </li>
+      <li class="nav-item" sec:authorize="isAuthenticated()"><a href="../logout" class="nav-link">Logout</a></li>
+      <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="../login" class="nav-link">Login</a></li>
+      <li class="nav-item" sec:authorize="!isAuthenticated()"><a href="../signup" class="nav-link">Signup</a></li>
+    </ul>
+  </nav>
+</header>
