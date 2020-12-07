@@ -6,51 +6,48 @@
     <div th:replace="fragments/head"></div>
   </head>
   <body>
-    <header>
-      <div th:replace="fragments/navbar"></div>
-      <div class="hero"></div>
-      <div class="container">
-        <div class="introduction">
-          <h2>Welcome</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque urna tempus velit interdum pulvinar. Vivamus ultricies urna
-            nulla, in lacinia turpis maximus et. Aenean malesuada libero vitae congue feugiat. Curabitur dignissim congue magna, sed scelerisque neque
-            aliquet in. Nullam iaculis est ante, eget facilisis mauris congue in. Sed id sem volutpat, aliquet ligula sed, iaculis eros. Fusce in diam
-            pulvinar, congue diam sit amet, condimentum dolor. Praesent at diam justo. Nunc consectetur eu tellus quis fringilla.
-          </p>
-          <p>
-            Vestibulum turpis leo, hendrerit at feugiat id, rutrum sit amet justo. Maecenas mauris nibh, aliquam ut nisl id, condimentum tempor
-            turpis.
-          </p>
+    <div th:replace="fragments/navbar"></div>
+    <div class="hero"></div>
+    <div class="container">
+      <div class="introduction">
+        <h2>Welcome</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque urna tempus velit interdum pulvinar. Vivamus ultricies urna
+          nulla, in lacinia turpis maximus et. Aenean malesuada libero vitae congue feugiat. Curabitur dignissim congue magna, sed scelerisque neque
+          aliquet in. Nullam iaculis est ante, eget facilisis mauris congue in. Sed id sem volutpat, aliquet ligula sed, iaculis eros. Fusce in diam
+          pulvinar, congue diam sit amet, condimentum dolor. Praesent at diam justo. Nunc consectetur eu tellus quis fringilla.
+        </p>
+        <p>
+          Vestibulum turpis leo, hendrerit at feugiat id, rutrum sit amet justo. Maecenas mauris nibh, aliquam ut nisl id, condimentum tempor turpis.
+        </p>
+      </div>
+      <div class="card-deck">
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
         </div>
-        <div class="card-deck">
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        </div>
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
     <div th:replace="fragments/footer"></div>
     <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
