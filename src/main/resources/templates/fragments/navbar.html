@@ -1,0 +1,29 @@
+<nav class="row navbar" id="navbar-custom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand navbar-link" href="#">
+              <i class="fas fa-soap"></i> Southern Art Soap</a> <!-- need to add class to change alignment  -->
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="../home" class="navbar-link">Home</a></li>
+                <li><a href="../shop" class="navbar-link">Shop</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!--search bar   -->
+              <li><form class="form-inline">
+                  <div class="md-form my-0">
+                    <input id="navbar-search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </form>
+              </li>
+                <li sec:authorize="isAuthenticated()"><a style="pointer-events: none;" class="navbar-link">
+                        <span sec:authentication="name"></span></a>
+                <li sec:authorize="isAuthenticated()"><a href="../logout" class="navbar-link">Logout</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="../login" class="navbar-link">Login</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="../signup" class="navbar-link">Signup</a></li>
+                <li><a href="../cart" class="navbar-link">Shopping Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
