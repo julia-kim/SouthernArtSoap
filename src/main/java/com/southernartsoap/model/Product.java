@@ -33,4 +33,7 @@ public class Product {
     
     @Size(max = 1000)
     private String etsyUrl;
+	
+	@OneToMany(targetEntity=Image.class, mappedBy="product",cascade=CascadeType.ALL, fetch = FetchType.LAZY)    
+private List<Image> image = new ArrayList<>();
 }
