@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Southern Art Soap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <div th:replace="fragments/head"></div>
+  </head>
+  <body>
+    <div th:replace="fragments/navbar"></div>
+    <div class="hero"></div>
+    <div class="container">
+      <div class="introduction">
+        <h2>Welcome</h2>
+        <p>
+          Welcome to Southern Art Soap! Here you will find the perfect soap party favor for baby showers, wedding showers, birthday partys or for a
+          gag/novelty gift or stocking stuffer. My goal was to be able to offer a special and unique gift that will bring joy to you or your
+          friends and family when they opened their special package. Each product is handmade and unique and will look as close as possible to the
+          images on the site. Message me and let me know how I can help you!
+        </p>
+        <p>
+          All our artisan soaps are handcrafted with care and made in small batches.
+        </p>
+      </div>
+      <div class="card-deck">
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div th:replace="fragments/footer"></div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/custom.js}" type="text/javascript"></script>
+  </body>
+</html>
