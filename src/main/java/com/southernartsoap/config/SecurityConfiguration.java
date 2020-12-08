@@ -35,8 +35,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.logoutSuccessUrl("/");
 	}
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/webjars/**", "/css/**", "/js/**", "/images/**");
-	}
 }
