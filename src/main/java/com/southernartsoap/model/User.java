@@ -1,8 +1,11 @@
 package com.southernartsoap.model;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,7 +57,9 @@ public class User {
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
 	
-	
+	@ElementCollection
+	private Map<Product, Integer> cart = new HashMap();
+
 	
 	
 	
