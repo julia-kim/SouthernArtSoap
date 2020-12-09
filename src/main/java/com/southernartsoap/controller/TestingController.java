@@ -17,8 +17,14 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class TestingController {
+    
     @GetMapping(value="/navbar-test")
     public String navbar(){
         return "navbar-test";
+    }
+    
+    @GetMapping(value="/cart")
+    public String cart(){
+        return "cart";
     }
 }
