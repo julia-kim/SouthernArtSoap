@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.southernartsoap.repository;
-
-import com.southernartsoap.model.Cart;
-import org.springframework.data.repository.CrudRepository;
+package com.southernartsoap.model;
 
 /**
  *
  * @author jared
  */
-public interface CartRepository extends CrudRepository<Cart, Long> {
+public class CartDetails {
     
 }
