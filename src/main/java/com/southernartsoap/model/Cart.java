@@ -9,6 +9,7 @@ package com.southernartsoap.model;
  *
  * @author jared
  */
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +38,6 @@ public class Cart {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //does this map to user or usermodel?
     private Long customerId;
     
-    
-    
-    
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CartDetails> cartDetailses;
 }
