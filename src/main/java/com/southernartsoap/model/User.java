@@ -1,9 +1,11 @@
 package com.southernartsoap.model;
 
 import java.util.Date;
+import java.util.HashMap;
 import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -61,6 +63,8 @@ public class User {
         @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinColumn(name = "cart_id")
         private Cart cart;
+        
+ 
 	
         
 	
