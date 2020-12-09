@@ -1,5 +1,32 @@
 package com.southernartsoap.service;
 
-public class ProductService {
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.southernartsoap.model.Product;
+import com.southernartsoap.repository.ProductRepository;
+
+@Service
+public class ProductService {
+	private ProductRepository productRepository;
+
+	public List<Product> findAll() {
+		return productRepository.findAll();
+	}
+
+	public Product findById(long id) {
+		return productRepository.findById(id);
+	}
+
+	public List<String> findDistinctCategories() {
+		return productRepository.findDistinctCategories();
+	}
+
+	public List<Product> findByCategory(String category) {
+		if (category == null)
+			return productRepository.findAll();
+		else
+			return productRepository.findByCategory(category);
+	}
 }
