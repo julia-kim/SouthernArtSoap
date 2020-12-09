@@ -1,7 +1,7 @@
 package com.southernartsoap.model;
 
 import java.util.Date;
-import java.util.HashMap;
+
 import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 
-public class User {
+public class User extends UserDetails {
 	
 	@CreationTimestamp 
 	private Date createdAt;
@@ -63,13 +63,6 @@ public class User {
         @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinColumn(name = "cart_id")
         private Cart cart;
-        
- 
-	
-        
-	
-	
-	
 	
 	
 }

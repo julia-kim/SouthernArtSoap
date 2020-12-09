@@ -8,12 +8,13 @@ package com.southernartsoap.repository;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import com.southernartsoap.model.Review;
 
 /**
  *
  * @author jared
  */
-public interface ReviewRepository extends CrudRepository<Rewiew, Long>{
+public interface ReviewRepository extends CrudRepository<Review, Long>{
     List<Review> findAllReviewsByProductId();
 }
 
