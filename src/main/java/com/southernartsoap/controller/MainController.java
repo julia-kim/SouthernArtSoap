@@ -15,29 +15,29 @@ import com.southernartsoap.service.ProductService;
 
 import lombok.Data;
 
-@Data
+
 @Controller
 @ControllerAdvice // This makes the `@ModelAttribute`s of this controller available to all controllers, for the navbar.
 public class MainController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/")
+    @GetMapping(value = "/")
     public String home() {
         return "index";
     }
 
-    @ModelAttribute("products")
+    @ModelAttribute(value = "products")
     public List<Product> products() {
         return productService.findAll();
     }
 
-    @ModelAttribute("categories")
+    @ModelAttribute(value = "categories")
     public List<String> categories() {
         return productService.findDistinctCategories();
     }
 
-    @GetMapping("/filter")
+    @GetMapping(value = "/filter")
     public String filter(@RequestParam(required = false) String category,
                          Model model) {
         List<Product> filtered = productService.findByCategory(category);
@@ -45,9 +45,9 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/about")
+    @GetMapping(value = "/about")
     public String about() {
-        return "about";
+        return "filters";
     }
 }
 

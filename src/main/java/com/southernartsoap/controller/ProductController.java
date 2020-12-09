@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.service.ProductService;
 
+@Controller
 public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping(value = { "/shop" })
+	@GetMapping(value = "/shop")
 	public String getProducts(@RequestParam(value = "filter", required = false) String filter, Model model) {
 		List<Product> products = new ArrayList<>();
 		if (filter == null) {
 			filter = "all";
-		}
-		if (filter.equalsIgnoreCase("baby")) {
+		} else if (filter.equalsIgnoreCase("baby")) {
 			products = productService.findByCategory("baby shower");
 			model.addAttribute("filter", "baby");
-		} 
-		if (filter.equalsIgnoreCase("wedding")) {
+		} else if (filter.equalsIgnoreCase("wedding")) {
 			products = productService.findByCategory("wedding");
 			model.addAttribute("filter", "following");
-		} if (filter.equalsIgnoreCase("holiday")) {
+		} else if (filter.equalsIgnoreCase("holiday")) {
 			products = productService.findByCategory("holidays");
 			model.addAttribute("filter", "holiday");
-		} if (filter.equalsIgnoreCase("seasonal")) {
+		} else if (filter.equalsIgnoreCase("seasonal")) {
 			products = productService.findByCategory("seasons");
 			model.addAttribute("filter", "seasonal");
-		} if (filter.equalsIgnoreCase("flower")) {
+		} else if (filter.equalsIgnoreCase("flower")) {
 			products = productService.findByCategory("flowers");
 			model.addAttribute("filter", "flower");
-		}  else {
+		} else {
 			products = productService.findAll();
 			model.addAttribute("filter", "all");
 		}
@@ -46,20 +46,19 @@ public class ProductController {
 		return "shop";
 	}
 
-    @GetMapping("/product/{id}")
-    public String show(@PathVariable int id, Model model) {
-        Product product = productService.findById(id);
-        model.addAttribute("product", product);
-        return "product";
-    }
+	@GetMapping(value = "/product/{id}")
+	public String show(@PathVariable int id, Model model) {
+		Product product = productService.findById(id);
+		model.addAttribute("product", product);
+		return "product";
+	}
 
-    // TODO: Either implement ADMIN controls or remove these methods.
+	// TODO: Either implement ADMIN controls or remove these methods.
 
-    // @RequestMapping(value = "/product", method = {RequestMethod.POST, RequestMethod.PUT})
-    // public String createOrUpdate(@Valid Product product) {
-    //     productService.save(product);
-    //     return "redirect:/product/" + product.getId();
-    // }
+	// @RequestMapping(value = "/product", method = {RequestMethod.POST,
+	// RequestMethod.PUT})
+	// public String createOrUpdate(@Valid Product product) {
+	// productService.save(product);
+	// return "redirect:/product/" + product.getId();
+	// }
 }
-
-
