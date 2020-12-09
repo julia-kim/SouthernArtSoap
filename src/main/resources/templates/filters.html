@@ -1,165 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <html>
-    <head>
-      <title>Southern Art Soap</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <div th:replace="fragments/head"></div>
-    </head>
-    <body>
-      <div th:replace="fragments/navbar"></div>
+  <head>
+    <title>Southern Art Soap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <div th:replace="fragments/head"></div>
+  </head>
+  <body>
+    <div th:replace="fragments/navbar"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">All soap</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Baby shower</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">All soap</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Baby shower</li>
-              </ol>
-            </nav>
+      <div class="row">
+        <div class="col-3">
+          <!-- list of filters. It's needed to be done O_o-->
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action"> All soap</a>
+            <a href="#" class="list-group-item list-group-item-action active">Baby Shower</a>
+            <a href="#" class="list-group-item list-group-item-action">Teen stoking soap</a>
+            <a href="#" class="list-group-item list-group-item-action">Wedding</a>
+            <a href="#" class="list-group-item list-group-item-action">Flowers</a>
+            <a href="#" class="list-group-item list-group-item-action">Fall season</a>
+            <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Christmas</a>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-3">
-            <!-- list of filters. It's needed to be done O_o-->
-            <div class="list-group list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action"> All soap</a>
-              <a href="#" class="list-group-item list-group-item-action active">Baby Shower</a>
-              <a href="#" class="list-group-item list-group-item-action">Teen stoking soap</a>
-              <a href="#" class="list-group-item list-group-item-action">Wedding</a>
-              <a href="#" class="list-group-item list-group-item-action">Flowers</a>
-              <a href="#" class="list-group-item list-group-item-action">Fall season</a>
-              <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Christmas</a>
-            </div>
+        <!-- product cards block, three in a row-->
+        <div class="col-9">
+          <div class="row">
+            <!-- Sort by if we want to do that-->
           </div>
 
-          <!-- product cards block, three in a row-->
-          <div class="col-9">
-            <div class="row">
-              <!-- Sort by if we want to do that-->
-            </div>
-
-            <div class="row">
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <!-- Instead of Soap title should be query to db? -->
-                      <h4 class="card-title">Soap title</h4>
-                      <!-- Instead of Listed price should be query to db? -->
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
+          <div class="row">
+            <div class="col-4" th:each="item : ${products}">
+              <a href="" class="custom-card">
+                <div class="card text-dark">
+                  <img class="card-img-top" th:src="'img/' + ${item.image[0].imgPath}" alt="Card image cap" />
+                  <div class="card-body">
+                    <h4 class="card-title" th:text="${item.name}"></h4>
+                    <h5 class="card-title" th:text="${item.price}"></h5>
                   </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <br />
-            <div class="row">
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <br />
-            <div class="row">
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-4">
-                <a href="" class="custom-card">
-                  <div class="card text-dark">
-                    <img class="card-img-top" src="..." alt="Card image cap" />
-                    <div class="card-body">
-                      <h4 class="card-title">Soap title</h4>
-                      <h5 class="card-title">$2.50</h5>
-                    </div>
-                  </div>
-                </a>
-              </div>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <div th:replace="fragments/footer"></div>
-    </body>
-  </html>
+    </div>
+    <div th:replace="fragments/footer"></div>
+  </body>
 </html>
