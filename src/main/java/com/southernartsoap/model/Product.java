@@ -28,19 +28,23 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "product_id")
 	private Long id;
-	
+
 	@Column(name = "product_name")
 	private String name;
 	private Double price;
+
+	@Size(max = 2000)
 	private String description;
+
 	private String materials;
 	private String dimensions;
-    private Integer weight;
-    
-    @Size(max = 1000)
-    private String etsyUrl;
-    private String category;
-	
-	@OneToMany(targetEntity=Image.class, mappedBy="product",cascade=CascadeType.ALL, fetch = FetchType.LAZY)    
+	private Double weight;
+
+	@Size(max = 1000)
+	private String etsyUrl;
+
+	private String category;
+
+	@OneToMany(targetEntity = Image.class, mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Image> image = new ArrayList<>();
 }
