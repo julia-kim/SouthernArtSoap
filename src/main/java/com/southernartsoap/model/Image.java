@@ -31,7 +31,7 @@ public class Image {
 	private String imgPath;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "product_name")
+	@JoinColumn(name = "product_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Product product;
 }
