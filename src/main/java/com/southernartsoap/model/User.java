@@ -1,12 +1,16 @@
 package com.southernartsoap.model;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -53,6 +57,12 @@ public class User {
 	
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
+        
+        @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @JoinColumn(name = "cart_id")
+        private Cart cart;
+	
+        
 	
 	
 	
