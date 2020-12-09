@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 
-public class User {
+public class User extends UserDetails {
 	
 	@CreationTimestamp 
 	private Date createdAt;
