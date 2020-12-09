@@ -19,8 +19,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -53,7 +51,7 @@ public class Review {
         
         @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //fetch crap
         @JoinColumn(name = "customer_id")
-        private Customer customer;
+        private User customer;
         
         //content
         String content;
