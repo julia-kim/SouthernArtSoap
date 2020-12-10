@@ -34,7 +34,7 @@ public class MainController {
         return productService.findDistinctCategories();
     }
 
-    @GetMapping(value = "/products/filter/{category}")
+    @GetMapping(value = "/products/filter")
     public String filter(@RequestParam(required = false) String category,
                          Model model) {
         List<Product> filtered = productService.findByCategory(category);
