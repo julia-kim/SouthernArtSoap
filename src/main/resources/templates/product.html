@@ -149,6 +149,25 @@
             </div>
           </div>
         </div>
+        <br>
+		<br>
+		<div class="row">
+			<div class="card border-light mb-3" >
+				<div class="card-header">
+					<span><b>Jessica Rabbit</b><!-- <span th:text="${...}"> Insert name from review db --></span>
+					<span> Oct 15, 2020 <!-- <span th:text="${...}"> Insert date from review db. Then we can update this in format "yesterday", "2 days ego", etc. --></span>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">place for stars</h5>
+					<p class="card-text">Love my cute little pumpkin soap!! It smell wonderful!! So happy with my purchase!! Fast shipping and packed perfectly!!! Thanks again
+						<!-- <p class="..." th:utext="${...}"> Insert name from review db -->
+					</p>
+						<!-- <span th:href="${...}"> if we have random reviews on each product page, we'd need to insert product_name & picture as link to the product page from review db. If we have reviews for the product on that page, need to delete card-footer-->
+				<div class="card-footer bg-transparent border-light"><em>Purchased item: Stocking Stuffer, Mitten Soap Favors, Baby Shower Favors, Gift for kids, Baby Sprinkle Favors </em>
+				</div>
+				</div>
+			</div>	
+		</div>
       </div>
 
 			<div th:replace="fragments/footer"></div>
