@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.southernartsoap.model.Image;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.service.ProductService;
 
@@ -18,38 +19,12 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping(value = "/shop")
-	public String getProducts(@RequestParam(value = "filter", required = false) String filter, Model model) {
-		List<Product> products = new ArrayList<>();
-		if (filter == null) {
-			filter = "all";
-		} else if (filter.equalsIgnoreCase("baby")) {
-			products = productService.findByCategory("baby shower");
-			model.addAttribute("filter", "baby");
-		} else if (filter.equalsIgnoreCase("wedding")) {
-			products = productService.findByCategory("wedding");
-			model.addAttribute("filter", "following");
-		} else if (filter.equalsIgnoreCase("holiday")) {
-			products = productService.findByCategory("holidays");
-			model.addAttribute("filter", "holiday");
-		} else if (filter.equalsIgnoreCase("seasonal")) {
-			products = productService.findByCategory("seasons");
-			model.addAttribute("filter", "seasonal");
-		} else if (filter.equalsIgnoreCase("flower")) {
-			products = productService.findByCategory("flowers");
-			model.addAttribute("filter", "flower");
-		} else {
-			products = productService.findAll();
-			model.addAttribute("filter", "all");
-		}
-		model.addAttribute("productList", products);
-		return "shop";
-	}
-
-	@GetMapping(value = "/product/{id}")
+	@GetMapping(value = "/products/{id}")
 	public String show(@PathVariable int id, Model model) {
 		Product product = productService.findById(id);
+		List<Image> images = productService.findAllProductImagesByProductId(id);
 		model.addAttribute("product", product);
+		model.addAttribute("images", images);
 		return "product";
 	}
 

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.service.ProductService;
 
-
 @Controller
 @ControllerAdvice // This makes the `@ModelAttribute`s of this controller available to all controllers, for the navbar.
 public class MainController {
@@ -24,7 +23,7 @@ public class MainController {
     public String home() {
         return "index";
     }
-
+    
     @ModelAttribute(value = "products")
     public List<Product> products() {
         return productService.findAll();
@@ -35,11 +34,16 @@ public class MainController {
         return productService.findDistinctCategories();
     }
 
-    @GetMapping(value = "/filter")
+    @GetMapping(value = "/products/filter/{category}")
     public String filter(@RequestParam(required = false) String category,
                          Model model) {
         List<Product> filtered = productService.findByCategory(category);
         model.addAttribute("products", filtered); // Overrides the @ModelAttribute above.
+        return "filters";
+    }
+    
+    @GetMapping(value = "/products")
+    public String shopAll() {
         return "filters";
     }
 

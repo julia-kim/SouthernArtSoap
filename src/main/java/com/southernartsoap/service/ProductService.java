@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.southernartsoap.model.Image;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.repository.ProductRepository;
 
@@ -30,5 +31,10 @@ public class ProductService {
 			return productRepository.findAll();
 		else
 			return productRepository.findByCategory(category);
+	}
+	
+	public List<Image> findAllProductImagesByProductId(long id) {
+		Product product = productRepository.findById(id);
+		return product.getImage();
 	}
 }
