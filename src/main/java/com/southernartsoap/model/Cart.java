@@ -36,7 +36,7 @@ public class Cart {
     private Long id;
     
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //does this map to user or usermodel?
-    private Long customerId;
+    private User user;
     
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CartDetails> cartDetailses;

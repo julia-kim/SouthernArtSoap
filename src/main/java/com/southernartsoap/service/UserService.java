@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.model.User;
 import com.southernartsoap.repository.UserRepository;
+import com.southernartsoap.model.Cart;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -38,16 +39,21 @@ public class UserService implements UserDetailsService {
         return findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
-    public void updateCart(Map<Product, Integer> cart) {
+    public void updateCart(Cart cart) {
         User user = getLoggedInUser();
         user.setCart(cart);
         saveExisting(user);
     }
 
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = findByUsername(username);
+//        if(user == null) throw new UsernameNotFoundException("Username not found.");
+//        return user;
+//    }
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username);
-        if(user == null) throw new UsernameNotFoundException("Username not found.");
-        return user;
+    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
