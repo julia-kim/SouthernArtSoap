@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Southern Art Soap</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <div th:replace="fragments/head"></div>
   </head>
   <body>
@@ -49,8 +48,6 @@
       </div>
     </div>
     <div th:replace="fragments/footer"></div>
-    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
-    <script th:src="@{/js/custom.js}" type="text/javascript"></script>
+    <div th:replace="fragments/scripts"></div>
   </body>
 </html>
