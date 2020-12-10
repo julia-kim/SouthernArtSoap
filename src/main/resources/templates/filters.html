@@ -20,15 +20,13 @@
 
       <div class="row">
         <div class="col-3">
-          <!-- list of filters. It's needed to be done O_o-->
-          <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action"> All soap</a>
-            <a href="#" class="list-group-item list-group-item-action active">Baby Shower</a>
-            <a href="#" class="list-group-item list-group-item-action">Teen stoking soap</a>
-            <a href="#" class="list-group-item list-group-item-action">Wedding</a>
-            <a href="#" class="list-group-item list-group-item-action">Flowers</a>
-            <a href="#" class="list-group-item list-group-item-action">Fall season</a>
-            <a href="#" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Christmas</a>
+          <!-- list of filters. It's needed to be done O_o -->
+          <div class="list-group list-group-flush" th:each="category : ${categories}"  th:with="regex=${#strings.toLowerCase(category.replaceAll('[\s\/]', '-'))}">
+            <a
+              th:href="@{'/products/filter/' + ${regex} (category=${category})}"
+              class="list-group-item list-group-item-action"
+              th:text="${category}"
+            ></a>
           </div>
         </div>
 
@@ -40,9 +38,9 @@
 
           <div class="row">
             <div class="col-4" th:each="item : ${products}">
-              <a th:href="@{products/{id} (id=${item.id})}" class="custom-card">
+              <a th:href="@{/products/{id} (id=${item.id})}" class="custom-card">
                 <div class="card text-dark">
-                  <img class="card-img-top" th:src="'img/' + ${item.image[0].imgPath}" alt="Card image cap" />
+                  <img class="card-img-top" th:src="'/img/' + ${item.image[0].imgPath}" alt="Card image cap" />
                   <div class="card-body">
                     <h4 class="card-title" th:text="${item.name}"></h4>
                     <h5 class="card-title" th:text="'$' + ${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}"></h5>
@@ -54,7 +52,8 @@
         </div>
       </div>
     </div>
-		<div th:replace="fragments/footer"></div>
-		<div th:replace="fragments/scripts"></div>
+
+    <div th:replace="fragments/footer"></div>
+    <div th:replace="fragments/scripts"></div>
   </body>
 </html>
