@@ -5,26 +5,17 @@
  */
 package com.southernartsoap.controller;
 
-
-import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.GetMapping;
-
 
 /**
  *
  * @author jared
  */
-@Controller
-public class TestingController {
-    
-    @GetMapping(value="/navbar-test")
-    public String navbar(){
-        return "navbar-test";
-    }
+public class CartController {
     
     @GetMapping(value="/cart")
     public String cart(){
         return "cart";
     }
+    
 }
