@@ -125,7 +125,20 @@ h5 {
 	white-space: nowrap;
 }
 
-/* === INDIVIDUAL PRODUCT PAGE === */
+/* === HOMEPAGE === */
+.card-deck img.card-img-top {
+	max-height: 200px;
+    min-height: 350px;
+    object-fit: cover;
+}
+
+.card-deck .card-title {
+	color: #232323;
+	font-weight: 700;
+}
+
+/* === PRODUCT PAGE === */
+
 .img-thumbnail {
 	border: 0;
 	border-radius: 0;
@@ -136,7 +149,7 @@ ol {
 	list-style: none;
 }
 
-p {
+.p-description {
   white-space: pre-line;
 }
 
