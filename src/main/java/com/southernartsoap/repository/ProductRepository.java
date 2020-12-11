@@ -2,6 +2,8 @@ package com.southernartsoap.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,11 +12,11 @@ import com.southernartsoap.model.Product;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
-	List<Product> findAll();
-
 	Product findById(long id);
+	
+	Page<Product> findAll(Pageable pageable);
 
-	List<Product> findByCategory(String category);
+	Page<Product> findByCategory(String category, Pageable pageable);
 
 	@Query("SELECT DISTINCT p.category FROM Product p")
 	List<String> findDistinctCategories();
