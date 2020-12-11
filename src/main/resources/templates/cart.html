@@ -23,13 +23,18 @@
                 <th></th>
               </tr>
             </thead>
-            <!-- TH to loop on cart details goes here   -->
             <tbody>
+              <h1 th:text="${cartDetailses[0]}"></h1>
+              <!-- <h1 th:text="${cartDetailses.length}"></h1> -->
+              <!-- <h1 th:text="${images[0]}"></h1> -->
+            <!-- TH to loop on cart details goes here   -->
+            <div th:each="cartDetails :${cartDetailses}">
               <tr>
                 <td class="col-8">
                   <div class="media">
                     <a class="thumbnail pull-left" href="#">
-                      <img class="media-image img-thumbnail" src="/img/il_794xN.1742474632_msh2.jpg" />
+                      <!--appending Stat.index to a value in a thymeleaf for each loop gives the index value   -->
+                      <img class="media-image img-thumbnail" src="" /> 
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a href="#">Soap</a></h4>
@@ -47,61 +52,10 @@
                   <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </td>
               </tr>
-              <tr>
-                <td class="col-md-8">
-                  <div class="media">
-                    <a class="thumbnail pull-left" href="#">
-                      <img class="img-thumbnail" src="/img/il_794xN.1742474632_msh2.jpg" />
-                    </a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><a href="#">Soap</a></h4>
-                    </div>
-                  </div>
-                </td>
-                <td class="col-md-1">
-                  <input type="email" class="form-control text-center" value="2" />
-                </td>
-                <td class="col-md-1 text-center">$9.99</td>
-                <td class="col-md-1 text-center">$9.98</td>
-                <td class="col-md-1">
-                  <button type="button" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-md-8">
-                  <div class="media">
-                    <a class="thumbnail pull-left" href="#">
-                      <img class="img-thumbnail" src="/img/il_794xN.1742474632_msh2.jpg" />
-                    </a>
-                    <div class="media-body">
-                      <h4 class="media-heading"><a href="#">Soap</a></h4>
-                    </div>
-                  </div>
-                </td>
-                <td class="col-md-1">
-                  <input type="email" class="form-control text-center" value="2" />
-                </td>
-                <td class="col-md-1 text-center">$999.99</td>
-                <td class="col-md-1 text-center">$999.98</td>
-                <td class="col-md-1">
-                  <button type="button" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><h3>Total</h3></td>
-                <td class="text-right">
-                  <h3>$9.999.99</h3>
-                </td>
-              </tr>
+              <!--  end of loop  -->
+            </div>
             </tbody>
           </table>
-        </div>
         <div class="col">
           <div class="pt-4">
             <h5 class="mb-3">The total amount of</h5>

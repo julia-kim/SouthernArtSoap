@@ -37,4 +37,10 @@ public class ProductService {
 		Product product = productRepository.findById(id);
 		return product.getImage();
 	}
+        
+        //for CartController. Is this the best place to put it?
+        public Image findFirstProductImagesByProductId(long id) { //is there a chance this is non-deterministic?
+		Product product = productRepository.findById(id);
+		return product.getImage().get(0);
+	}
 }
