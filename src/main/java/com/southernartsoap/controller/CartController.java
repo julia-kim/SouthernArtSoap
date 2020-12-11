@@ -36,4 +36,3 @@ public class CartController {
     
     
 }
-  //<div th:if="${tweetList.isEmpty()==true}">
