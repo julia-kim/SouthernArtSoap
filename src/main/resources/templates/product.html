@@ -71,9 +71,9 @@
               <div>
                 <p>Description</p>
                 <p class="p-description" th:text="${product.description}"></p>
-                <p>Materials: <span class="p-description" th:text="${product.materials}"></span></p>
-                <p>Dimensions: <span class="p-description" th:text="${product.dimensions}"/><span> in</span></p>
-                <p>Weight: <span class="p-description" th:text="${product.weight}"/><span> oz</span></p>
+                <p th:if="${product.materials}">Materials: <span class="p-description" th:text="${product.materials}"></span></p>
+                <p th:if="${product.dimensions}">Dimensions: <span class="p-description" th:text="${product.dimensions}"/><span> in</span></p>
+                <p th:if="${product.weight}">Weight: <span class="p-description" th:text="${product.weight}"/><span> oz</span></p>
                 
               </div>
             </div>
