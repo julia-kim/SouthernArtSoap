@@ -104,6 +104,7 @@ h5 {
 	border-radius: 0;
 }
 
+
 /* === PAGINATION === */
 .pagination > .page-item > .page-link,
 .pagination > .page-item > .page-link {
@@ -112,10 +113,44 @@ h5 {
   color: #432B27;
   font-weight: 700;
   margin-right: 5px;
+}
+
+/* === PRODUCT CARDS === */
+.custom-card .card {
+	border:0;
+	margin-bottom: .5em;
+}
+
+.custom-card .card-body {
+	padding: 0;
+}
+
+.custom-card img {
+	max-height: 150px;
+	object-fit: cover;
+}
+
+.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* === HOMEPAGE === */
+.card-deck img.card-img-top {
+	max-height: 200px;
+    min-height: 350px;
+    object-fit: cover;
+}
+
+.card-deck .card-title {
+	color: #232323;
+	font-weight: 700;
 
 }
 
 /* === PRODUCT PAGE === */
+
 .img-thumbnail {
 	border: 0;
 	border-radius: 0;
@@ -126,7 +161,7 @@ ol {
 	list-style: none;
 }
 
-p {
+.p-description {
   white-space: pre-line;
 }
 
