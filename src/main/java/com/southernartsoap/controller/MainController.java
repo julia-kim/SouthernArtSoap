@@ -49,16 +49,12 @@ public class MainController {
 			@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 		Page<Product> productPage = productService.findByCategory(category, page);
 		List<Product> filtered = productPage.getContent();
+		model.addAttribute("category", category);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", productPage.getTotalPages());
 		model.addAttribute("products", filtered);
 		return "filters";
 	}
-
-//	@GetMapping(value = "/products")
-//	public String shopAll() {
-//		return "filters";
-//	}
 
 	@GetMapping(value = "/about")
 	public String about() {

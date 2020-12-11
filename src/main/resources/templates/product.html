@@ -15,9 +15,9 @@
           <div class="col">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">All Soap</a></li>
-                <li class="breadcrumb-item"><a href="#">Category</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Product title</li>
+                <li class="breadcrumb-item"><a th:href="@{/products}">All Soaps</a></li>
+                <li class="breadcrumb-item text-capitalize"><a th:href="@{/products/filter (category=${category})}" th:text="${category}"></a></li>
+                <li class="breadcrumb-item active" aria-current="page" th:text="${product.name}"></li>
               </ol>
             </nav>
           </div>

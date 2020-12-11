@@ -23,6 +23,7 @@ public class ProductController {
 	public String show(@PathVariable int id, Model model) {
 		Product product = productService.findById(id);
 		List<Image> images = productService.findAllProductImagesByProductId(id);
+		model.addAttribute("category", product.getCategory());
 		model.addAttribute("product", product);
 		model.addAttribute("images", images);
 		return "product";
