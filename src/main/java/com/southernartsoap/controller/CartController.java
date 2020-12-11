@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.southernartsoap.model.CartDetails;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -24,11 +26,14 @@ public class CartController {
     
     @GetMapping(value="/cart")
     public String cart(Model model){
-        List<CartDetails> cartDetailses = cartDetailsService.findAllCartDetailses();
-        model.addAttribute("cartDetailses", cartDetailses)
+        //initializing it like this allows us to check if it's empty in the cart.html template
+        ArrayList<CartDetails> cartDetailses = new ArrayList<CartDetails>();
+        cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailses();
+        model.addAttribute("cartDetailses", cartDetailses);
         return "cart";
     }
     
     
     
 }
+  //<div th:if="${tweetList.isEmpty()==true}">

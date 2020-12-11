@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CartDetailsRepository extends CrudRepository<CartDetails, Long>{
     //we always want all the CartDetails because we want the entire shopping cart
+//    @Override //is this needed?
     List<CartDetails> findAll();
     
 }

@@ -20,6 +20,10 @@
                 <th></th>
               </tr>
             </thead>
+            <!-- TH to loop on cart details goes here   -->
+            <div th:if="${cartDetailses.isEmpty()==true}">
+              <h1>Your cart is empty</h1>
+            </div>
             <tbody>
               <tr>
                 <td class="col-8">
