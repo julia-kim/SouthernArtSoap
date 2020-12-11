@@ -49,11 +49,14 @@ public class CartController {
             
         }
         
+        double totalPrice = 0; //passsed to thymeleaf to b/c thymleaf is a pain
         for(CartDetails cartDetails : cartDetailses){
             Long productId = cartDetails.getProduct().getId();
             Image image = productService.findFirstProductImagesByProductId(productId); 
             cartImages.add(image);
+            totalPrice+= cartDetails.getProduct().getPrice() * cartDetails.getQuantity();
         }
+        model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("cartDetailses", cartDetailses);
         model.addAttribute("images", cartImages);
         
