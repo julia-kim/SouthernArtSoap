@@ -48,6 +48,7 @@ public class CartController {
             cartDetailses.add(new CartDetails(Long.valueOf(i), product, cart, 2, "Make it rain", "Roses", "green"));
             
         }
+        
         for(CartDetails cartDetails : cartDetailses){
             Long productId = cartDetails.getProduct().getId();
             Image image = productService.findFirstProductImagesByProductId(productId); 

@@ -24,27 +24,25 @@
               </tr>
             </thead>
             <tbody>
-              <h1 th:text="${cartDetailses[0]}"></h1>
-              <!-- <h1 th:text="${cartDetailses.length}"></h1> -->
-              <!-- <h1 th:text="${images[0]}"></h1> -->
             <!-- TH to loop on cart details goes here   -->
             <div th:each="cartDetails :${cartDetailses}">
+              <h1 th:text="${images[cartDetailsStat.index].getImgPath()}"></h1>
               <tr>
                 <td class="col-8">
                   <div class="media">
                     <a class="thumbnail pull-left" href="#">
                       <!--appending Stat.index to a value in a thymeleaf for each loop gives the index value   -->
-                      <img class="media-image img-thumbnail" src="" /> 
+                      <img class="media-image img-thumbnail" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
                     </a>
                     <div class="media-body">
-                      <h4 class="media-heading"><a href="#">Soap</a></h4>
+                      <h4 class="media-heading"><a href="#"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
                     </div>
                   </div>
                 </td>
                 <td class="col-sm-1 col-md-1">
-                  <input type="email" class="form-control text-center" value="3" />
+                  <input type="email" class="form-control text-center" th:value="${cartDetails.getQuantity()}" />
                 </td>
-                <td class="col-sm-1 col-md-1 text-center">$9.99</td>
+                <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getProduct.getPrice()}+'0'"></td> <!--Append 0 for formatting. Probably a superior solution with a thymleaf format option beginning with #   -->
                 <td class="col-sm-1 col-md-1 text-center">$99.99</td>
                 <td class="col-sm-1 col-md-1">
                   <button type="button" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
