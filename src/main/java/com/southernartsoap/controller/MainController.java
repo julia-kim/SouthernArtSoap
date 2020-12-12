@@ -1,5 +1,6 @@
 package com.southernartsoap.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,6 +39,7 @@ public class MainController {
 		model.addAttribute("totalPages", productPage.getTotalPages());
 		model.addAttribute("products", products);
 		return "filters";
+
 	}
 
 	@ModelAttribute(value = "categories")
@@ -54,6 +57,17 @@ public class MainController {
 		model.addAttribute("totalPages", productPage.getTotalPages());
 		model.addAttribute("products", filtered);
 		return "filters";
+	}
+  
+	@GetMapping(value = "/search")
+	public String search(@RequestParam(value = "q", required = false) String query, Model model) {
+		List<Product> results = new ArrayList<>();
+		if (query != null) {
+			results = productService.findByNameIgnoreCaseContaining(query);
+			model.addAttribute("query", query);
+			model.addAttribute("results", results);
+		}
+		return "search";
 	}
 
 	@GetMapping(value = "/about")
