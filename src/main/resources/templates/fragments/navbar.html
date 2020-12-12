@@ -2,12 +2,14 @@
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="/">Southern Art Soap</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a th:href="@{/products}" class="nav-link"><small>Shop All</small></a></li>
-    <li class="nav-item">
-        <form class="form-inline">
+      <li class="nav-item">
+        <a th:href="@{/products}" class="nav-link"><small>Shop All</small></a>
+      </li>
+      <li class="nav-item">
+        <form class="form-inline" th:action="@{/search}" method="get">
           <div class="input-group">
-            <input id="navbar-search" class="form-control" type="text" placeholder="Search" aria-label="Search" />
-            <button class="btn" type="button">
+            <input id="navbar-search" class="form-control" type="text" placeholder="Search" aria-label="Search" name="q" th:value="*{q}"/>
+            <button class="btn" type="submit" value="search">
               <i class="fa fa-search"></i>
             </button>
           </div>

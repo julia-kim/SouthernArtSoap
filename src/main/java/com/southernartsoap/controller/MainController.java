@@ -1,5 +1,6 @@
 package com.southernartsoap.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,10 +56,17 @@ public class MainController {
 		return "filters";
 	}
 
-//	@GetMapping(value = "/products")
-//	public String shopAll() {
-//		return "filters";
-//	}
+	@GetMapping(value = "/search")
+	public String search(@RequestParam(value = "q", required = false) String query, Model model) {
+		List<Product> results = new ArrayList<>();
+		if (query != null) {
+			results = productService.findByNameIgnoreCaseContaining(query);
+			model.addAttribute("query", query);
+			model.addAttribute("results", results);
+		}
+		return "search";
+	}
+
 
 	@GetMapping(value = "/about")
 	public String about() {
