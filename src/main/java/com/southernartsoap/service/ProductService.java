@@ -37,4 +37,8 @@ public class ProductService {
 		Product product = productRepository.findById(id);
 		return product.getImage();
 	}
+	
+	public List<Product> findByNameIgnoreCaseContaining(String query) {
+        return productRepository.findByNameIgnoreCaseContaining(query);
+    }
 }
