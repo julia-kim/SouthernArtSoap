@@ -1,5 +1,6 @@
 package com.southernartsoap.model;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,12 +14,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +39,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 
-public class User extends UserDetails {
+public class User implements UserDetails{
+	
+	
+	  @Transient
+	  private boolean accountNonExpired = true;
+	  @Transient
+	  private boolean accountNonLocked = true;
+	  @Transient
+	  private boolean credentialsNonExpired = true;
+	  @Transient
+	  private boolean enabled = true;
+	  @Transient
+	  private Collection<GrantedAuthority> authorities = null;
+	
+
+	  
+	  
+	  
+	
+	private int active;
 	
 	@CreationTimestamp 
 	private Date createdAt;
