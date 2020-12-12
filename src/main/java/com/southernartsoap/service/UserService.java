@@ -1,6 +1,5 @@
 package com.southernartsoap.service;
 
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,8 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.southernartsoap.model.Product;
+
 import com.southernartsoap.model.User;
+
 import com.southernartsoap.repository.UserRepository;
 import com.southernartsoap.model.Cart;
 
@@ -30,6 +30,15 @@ public class UserService implements UserDetailsService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+    
+//    public User saveNewUser(User user) {
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setActive(1);
+//        Role userRole = RoleRepository.findByRole("USER");
+//        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+//        return userRepository.save(user);
+//    }
+    
 
     public void saveExisting(User user) {
         userRepository.save(user);
@@ -45,15 +54,30 @@ public class UserService implements UserDetailsService {
         saveExisting(user);
     }
 
+    
 //    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = findByUsername(username);
-//        if(user == null) throw new UsernameNotFoundException("Username not found.");
-//        return user;
+//    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+//        UserInfo activeUserInfo = userInfoDAO.getActiveUser(userName);
+//        String dBuserName = activeUserInfo.getUserName();
+//        if(dBuserName == null){
+//            throw new UsernameNotFoundException("User not authorized.");
+//        }
+//        GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getRole());
+//        UserDetails userDetails = (UserDetails)new User(dBuserName,
+//                activeUserInfo.getPassword(), Arrays.asList(authority));
+//        return userDetails;
 //    }
-
+    
+    
     @Override
-    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = findByUsername(username);
+        if(user == null) throw new UsernameNotFoundException("Username not found.");
+        return user;
     }
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 }
