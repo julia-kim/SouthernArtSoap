@@ -4,13 +4,18 @@
 	- STRAWBERRY CREAM 	 #F9BDB5
 	- VANILLA 			     #F7E3C7
 	- CHOCOLATE CREAM  	 #B48967
-	- CHOCOLATE GANACHE  #432B27
+  - CHOCOLATE GANACHE  #432B27
+  - #f9a79b
+  - #fbcbb7
+  - #d9eedb
+  - #9ce5de
+  - #05aba9
 */
 
 /* FONTS
 	- DEFAULT/BODY  Raleway, sans-serif
   - BRAND         Elsie Swash Caps, cursive;
-  - HEADINGS      Playfair Display, serif
+  - HEADINGS      Josefin Sans, serif
 */
 
 /* === GLOBAL SETTINGS === */
@@ -23,7 +28,7 @@ html {
 
 body {
   background-color: #fff;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
 }
 
@@ -41,6 +46,10 @@ body {
   height: 300px;
 }
 
+a {
+  color: #05aba9;
+}
+
 /* === TYPOGRAPHY === */
 h1,
 h2,
@@ -49,36 +58,30 @@ h4,
 h5,
 h6,
 th {
-  font-family: Playfair Display, serif;
+  font-family: Josefin Sans, serif;
 }
 
 h4 {
-	font-size: 1em;
+  font-size: 1em;
 }
 
 h5 {
-	font-size: 1em;
-	font-weight: 600;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 /* === NAVBAR === */
 .navbar {
-  background-color: #c31644;
-  border-radius: 0;
-}
-
-.navbar-top {
   background-color: #fff;
+  border-radius: 0;
+  font-family: "Josefin Sans";
   height: 6.875rem;
-}
-.navbar-top a {
-  color: #c31644;
 }
 
 .navbar-brand {
-  font-family: "Elsie Swash Caps", cursive;
+  font-family: "Glass Antiqua", cursive;
   font-size: 3.5em;
-  color: #fff;
+  color: #c31644;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
@@ -89,8 +92,7 @@ h5 {
 }
 
 .nav-link {
-  color: #fff;
-  font-weight: 300;
+  color: #c31644;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -99,54 +101,89 @@ h5 {
   color: #f9bdb5;
 }
 
-.breadcrumb {
+#navbar-search {
 	background-color: transparent;
-	border-radius: 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  border-radius: 0;
 }
 
 /* === PRODUCT CARDS === */
 .custom-card .card {
-	border:0;
-	margin-bottom: .5em;
+  border: 0;
+  margin-bottom: 0.5em;
 }
 
 .custom-card .card-body {
-	padding: 0;
+  padding: 0;
 }
 
 .custom-card img {
-	max-height: 150px;
-	object-fit: cover;
+  border-radius: 15px;
+  max-height: 150px;
+  object-fit: cover;
 }
 
 .truncate {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* === HOMEPAGE === */
+.card-deck .card {
+  border-color: transparent;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+}
 .card-deck img.card-img-top {
-	max-height: 200px;
-    min-height: 350px;
-    object-fit: cover;
+  border-radius: 15px;
+  max-height: 200px;
+  min-height: 350px;
+  object-fit: cover;
+}
+
+.card-img-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+  border-radius: 15px;
+  bottom: 0;
+  height: 50%;
+  position: absolute;
+  top: initial;
+  width: 100%;
 }
 
 .card-deck .card-title {
-	color: #232323;
-	font-weight: 700;
+  font-family: "Playfair Display", serif;
+  font-size: 1.9em;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.card-link {
+	color: #fff;
+	font-family: "Josefin Sans", sans-serif;
+	text-decoration: none;
 }
 
 /* === PRODUCT PAGE === */
 
+.carousel-item img {
+  max-height: 400px;
+  object-fit: contain;
+}
+
 .img-thumbnail {
-	border: 0;
-	border-radius: 0;
-	padding: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
 }
 
 ol {
-	list-style: none;
+  list-style: none;
 }
 
 .p-description {
@@ -164,7 +201,7 @@ ol {
 .footer {
   background-color: #c31644;
   color: #fff;
-  font-family: "Playfair Display", serif;
+  font-family: "Josefin Sans", serif;
   letter-spacing: 0.031em;
   padding: 3em 3.125%;
 }
