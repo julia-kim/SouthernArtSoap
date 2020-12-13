@@ -27,8 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
 		http.
-		authorizeRequests().antMatchers("/cart").authenticated().and()
+		authorizeRequests().antMatchers("/cart2").authenticated().and() //changed to cart2 to bypass security while testing cartcontroller
 		.formLogin().loginPage("/signin")
 		.loginProcessingUrl("/login").and()
 		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -36,6 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		http.csrf().disable();
 	    http.headers().frameOptions().disable();
+
 	}
 	
 }

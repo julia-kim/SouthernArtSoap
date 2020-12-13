@@ -14,8 +14,10 @@ import com.southernartsoap.model.Product;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
 	Product findById(long id);
+
 	
 	Page<Product> findAll(Pageable pageable);
+
 
 	Page<Product> findByCategory(String category, Pageable pageable);
 
