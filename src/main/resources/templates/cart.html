@@ -39,10 +39,10 @@
                     </div>
                   </div>
                 </td>
-                <form action="#" th:action="@{/cart}" th:object="${cartDetails}" method="post">
+                <form action="#" th:action="@{/cart/update/{id}(id=${cartDetails.id})}" th:object="${cartDetails}" method="post">
                     <td class="col-sm-1 col-md-1">
                     <!-- insert th:field for this th:field="*{quantity}"  -->
-                      <input type="email" class="form-control text-center"  th:value="${cartDetails.getQuantity()}" />
+                      <input type="text" class="form-control text-center"  name="newQuantity" th:value="${cartDetails.getQuantity()}" />
                     </td>
                     <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getProduct.getPrice()}+'0'"></td> <!--Append 0 for formatting. Probably a superior solution with a thymleaf format option beginning with #   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->

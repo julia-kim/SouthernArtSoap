@@ -91,20 +91,20 @@ public class CartController {
         cartDetailsService.removeCartDetailFromCartByCartDetailsId(id);
         return cart(model);
     }
-//    
-//    @PostMapping("/cart/update/{id}")
-//    public String updateQuantity(){
-//        
-//        
-//        return "cart";
-//    }
-//    
-//        @GetMapping(value="/cart")
-//    public String cart(Model model){
-//    	model.addAttribute("cartDetails", cartService.findAll());
-//        return "cart";
-//    }
-//    
+    
+    @PostMapping(value = "/cart/update/{id}")
+    public String updateCartDetailQuantityByCartDetailId(@PathVariable Long id, Integer newQuantity, Model model){
+        //do I need to update the database or will using a setter in cartDetails be sufficient? it has cascade.all so 
+        //i think changing the quantity with a setter should be sufficient. 
+        //get the cartDetailbyId
+//        CartDetails cartDetails = cartDetailsRepository.findAllById(id).get(0); //should we use a service instead of calling the repository?
+        //change quantity
+//        cartDetails.setQuantity(newQuantity);
+        cartDetailsService.updateCartDeailsQuantity(id, newQuantity);
+        
+        return cart(model);
+    }
+
     @PostMapping(value="/cart/add/{id}")
     public String addToCart(@PathVariable Long id, CartDetails cartDetails, Model model) {
     	User user = userService.getLoggedInUser();

@@ -48,4 +48,11 @@ public class CartDetailsService {
        //should also remove from cart through cascading
       cartDetailsRepository.deleteById(cartDetailsId);
    }
+    
+    public void updateCartDeailsQuantity(Long id, Integer newQuantity){
+        CartDetails cartDetails = cartDetailsRepository.findAllById(id).get(0);
+        cartDetails.setQuantity(newQuantity);
+        cartDetailsRepository.delete(cartDetails); //what a crappy way to do this. 
+        cartDetailsRepository.save(cartDetails);
+    }
 }

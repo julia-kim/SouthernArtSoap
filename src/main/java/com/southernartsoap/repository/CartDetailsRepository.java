@@ -22,4 +22,7 @@ public interface CartDetailsRepository extends CrudRepository<CartDetails, Long>
     //do I need @override?
     //probably don't need @ovverride because I am not modifying how it works
     void deleteById(Long id);
+   
+
+    List<CartDetails> findAllById(Long id); //says a type error when I do findById //returns just one item but in a list because that's how findAllById works. So we take the first element of the list. Always. 
 }
