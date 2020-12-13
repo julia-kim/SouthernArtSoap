@@ -26,7 +26,6 @@
             <tbody>
             <!-- TH to loop on cart details goes here   -->
             <div th:each="cartDetails :${cartDetailses}">
-              <!-- put the form here?   -->
               <tr>
                 <td class="col-8">
                   <div class="media">
@@ -44,15 +43,13 @@
                     <!-- insert th:field for this th:field="*{quantity}"  -->
                       <input type="text" class="form-control text-center"  name="newQuantity" th:value="${cartDetails.getQuantity()}" />
                     </td>
-                    <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getProduct.getPrice()}+'0'"></td> <!--Append 0 for formatting. Probably a superior solution with a thymleaf format option beginning with #   -->
+                    <!-- this is a better way to get the images and means we don't need to add an ArrayList<Image> to the model from the  controller   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
-                    <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getQuantity() * cartDetails.getProduct.getPrice()}+'0'"></td>
+                    <td class="col-sm-1 col-md-1 text-center" th:text="${#numbers.formatCurrency(cartDetails.getQuantity * cartDetails.getProduct.getPrice)}"></td>
                     <td class="col-sm-1 col-md-1">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
                 </form>
-<!-- <form action="#" th:action="@{~/blogposts/update/{id}(id=${blogPost.id})}" th:object="${blogPost}" method="GET"> -->
 <form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
-                  <!-- <input type="hidden" th:value="*{cartDetails.id}"/> -->
                   <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </form>
                     </td>
