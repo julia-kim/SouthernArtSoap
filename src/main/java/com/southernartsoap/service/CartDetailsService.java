@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.southernartsoap.repository.CartDetailsRepository;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author jared
@@ -54,5 +55,13 @@ public class CartDetailsService {
         cartDetails.setQuantity(newQuantity);
         cartDetailsRepository.delete(cartDetails); //what a crappy way to do this. 
         cartDetailsRepository.save(cartDetails);
+    }
+    
+  public List <CartDetails>  findAllCartDetailsesByCartIdSortedByDescendingDateCreated(Long cartId){
+        ArrayList<CartDetails> cartDetailses = (ArrayList<CartDetails>) findAllCartDetailsesByCartId(cartId);
+        //sort on .getCreatedAt
+        // https://stackoverflow.com/a/37291086/1491213
+        cartDetailses.sort((o1, o2) -> o1.getCreatedAt().compareTo(o2.getCreatedAt()));
+        return cartDetailses;
     }
 }
