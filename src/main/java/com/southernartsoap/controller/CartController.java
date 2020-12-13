@@ -55,7 +55,7 @@ public class CartController {
        ArrayList<CartDetails> cartDetailses = new ArrayList<CartDetails>();
        ArrayList<Image> cartImages = new ArrayList<Image>(); 
        if(user!=null){ //so cart doesn't crash if no one is logged in    
-            cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailsesByCartId(user.getCart().getId());    
+            cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailsesByCartIdSortedByDescendingDateCreated(user.getCart().getId());    
        }
        
         

@@ -10,6 +10,7 @@ package com.southernartsoap.model;
  * @author jared
  */
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.Column;
@@ -27,6 +28,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -41,6 +43,9 @@ public class CartDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cart_details_id") //correct name?
     private Long id;
+    
+    @CreationTimestamp 
+    private Date createdAt;
     
     //product id witt ManyToOne
     @ManyToOne(fetch = FetchType.LAZY, optional = false) //shouldl this be optinal?
