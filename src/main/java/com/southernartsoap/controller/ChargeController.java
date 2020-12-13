@@ -7,14 +7,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.southernartsoap.model.ChargeRequest;
+import com.southernartsoap.model.User;
 import com.southernartsoap.service.StripeService;
+import com.southernartsoap.service.UserService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 
 @Controller
 public class ChargeController {
 	@Autowired
-	private StripeService paymentsService;
+	private StripeService paymentsService; 
+	
+    @Autowired
+    private UserService userService;
 
 	@PostMapping("/charge")
 	public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
@@ -25,6 +30,10 @@ public class ChargeController {
 		model.addAttribute("status", charge.getStatus());
 		model.addAttribute("chargeId", charge.getId());
 		model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+		
+		// delete all items from user's cart
+		User user = userService.getLoggedInUser();
+		userService.deleteCart(user);
 		return "result";
 	}
 

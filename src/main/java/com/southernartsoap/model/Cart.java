@@ -42,6 +42,6 @@ public class Cart {
     @JoinColumn(name = "user_id") 
     private User user;
     
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true) // orphanRemoval: remove the child when it is not present in any parent's collection.
     private List<CartDetails> cartDetailses;
 }
