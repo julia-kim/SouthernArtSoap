@@ -28,6 +28,7 @@ public class ProductController {
 	public String show(@PathVariable int id, Model model) {
 		Product product = productService.findById(id);
 		List<Image> images = productService.findAllProductImagesByProductId(id);
+		model.addAttribute("category", product.getCategory());
 		CartDetails cartDetails = new CartDetails();
     	model.addAttribute("cartDetails", cartDetails);
 		model.addAttribute("product", product);

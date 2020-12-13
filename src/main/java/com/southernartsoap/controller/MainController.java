@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,6 +51,7 @@ public class MainController {
 			@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 		Page<Product> productPage = productService.findByCategory(category, page);
 		List<Product> filtered = productPage.getContent();
+		model.addAttribute("category", category);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", productPage.getTotalPages());
 		model.addAttribute("products", filtered);

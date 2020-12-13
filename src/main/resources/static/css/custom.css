@@ -121,6 +121,17 @@ h5 {
   margin-right: 5px;
 }
 
+
+/* === PAGINATION === */
+.pagination > .page-item > .page-link,
+.pagination > .page-item > .page-link {
+	background-color: #fff;
+	border-color: transparent;
+  color: #432B27;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
 /* === PRODUCT CARDS === */
 .custom-card .card {
   border: 0;
@@ -178,6 +189,7 @@ h5 {
 	color: #fff;
 	font-family: "Josefin Sans", sans-serif;
 	text-decoration: none;
+
 
 }
 

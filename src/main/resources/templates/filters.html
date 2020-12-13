@@ -11,8 +11,8 @@
         <div class="col">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">All soap</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Baby shower</li>
+              <li class="breadcrumb-item"><a th:href="@{/products}">All Soaps</a></li>
+              <li class="breadcrumb-item active text-capitalize" aria-current="page" th:if="${category}" th:text="${category}"></li>
             </ol>
           </nav>
         </div>
@@ -23,6 +23,7 @@
           <!-- list of filters. It's needed to be done O_o -->
           <div class="list-group list-group-flush" th:each="category : ${categories}">
             <a th:href="@{/products/filter (category=${category})}" class="list-group-item list-group-item-action" th:text="${category}"></a>
+
           </div>
         </div>
 
