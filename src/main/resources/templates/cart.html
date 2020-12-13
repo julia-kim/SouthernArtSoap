@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-8">
           <div th:if="${cartDetailses.isEmpty()==true}">
-            <h1>Your cart is empty</h1>
+            <h3>Your cart is empty</h3>
           </div>
           <table th:if="${cartDetailses.isEmpty()==false}" class="table table-hover">
             <thead>
@@ -24,9 +24,8 @@
               </tr>
             </thead>
             <tbody>
-            <!-- TH to loop on cart details goes here   -->
-            <div th:each="cartDetails :${cartDetailses}">
-              <tr>
+            <!-- TH to loop on cart details goes here   --> 
+              <tr th:each="cartDetails :${cartDetailses}">
                 <td class="col-8">
                   <div class="media">
                     <a class="thumbnail pull-left" href="#">
@@ -45,17 +44,17 @@
                     </td>
                     <!-- this is a better way to get the images and means we don't need to add an ArrayList<Image> to the model from the  controller   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
+                    <td class="col-sm-1 col-md-1" th:text="${#numbers.formatCurrency(cartDetails.product.price)}"></td>
                     <td class="col-sm-1 col-md-1 text-center" th:text="${#numbers.formatCurrency(cartDetails.getQuantity * cartDetails.getProduct.getPrice)}"></td>
                     <td class="col-sm-1 col-md-1">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
+                    
                 </form>
-<form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
-                  <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
+                  <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
                 </form>
-                    </td>
-                  </tr>
+              </tr>
               <!--  end of loop  -->
-            </div>
             </tbody>
           </table>
         <div class="col">
@@ -71,17 +70,33 @@
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                 <div>
-                  <strong>The total amount</strong>
+                  <strong>The total amount is</strong>
                 </div>
                 <span><strong th:text="${#numbers.formatCurrency(totalPrice)}"></strong></span>
               </li>
             </ul>
-
-            <button type="button" class="btn btn-primary btn-block mb-2">Checkout</button>
+            </div>
+            <form th:action="@{/charge}" method="POST" id="checkout-form">
+              <input type="hidden" th:value="${amount}" name="amount" />
+              <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                th:attr="data-key=${stripePublicKey},
+                  data-amount=${totalPrice * 100},
+                  data-currency=${currency}" 
+                data-name="Southern Art Soap" 
+                data-description="Thank you for your business!" 
+                data-image="https://user-images.githubusercontent.com/26291536/102018784-79299600-3d3d-11eb-960c-9519896229aa.png"
+                data-locale="auto"
+                data-zip-code="false"
+              ></script>
+            </form>
             <a class="d-block text-center" href="/">Continue Shopping</a>
-          </div>
+          
         </div>
       </div>
+      <!-- <div th:if="${userCart.size() == 0}">Nothing in your cart yet.</div> -->
     </div>
     <div th:replace="fragments/footer"></div>
     <div th:replace="fragments/scripts"></div>
