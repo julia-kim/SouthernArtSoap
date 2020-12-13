@@ -3,13 +3,13 @@
     <a class="navbar-brand" href="/">Southern Art Soap</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a th:href="@{/products}" class="nav-link"><small>Shop All</small></a>
+        <a th:href="@{/products}" class="nav-link">Shop All</a>
       </li>
       <li class="nav-item">
         <form class="form-inline" th:action="@{/search}" method="get">
           <div class="input-group">
-            <input id="navbar-search" class="form-control" type="text" placeholder="Search" aria-label="Search" name="q" th:value="*{q}"/>
-            <button class="btn" type="submit" value="search">
+            <input id="navbar-search" class="form-control rounded-pill py-2 mr-1 pr-5" type="text" placeholder="Search" aria-label="Search" name="q" th:value="*{q}"/>
+            <button class="btn rounded-pill border-0 ml-n5" type="submit" value="search">
               <i class="fa fa-search"></i>
             </button>
           </div>
