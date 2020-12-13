@@ -46,6 +46,9 @@
                         </thead>
                         <tbody>
                         <tr>
+                          <div th:if="${cartDetails.comments.isEmpty}">
+                            <td>N/A</td>
+                          </div>
                           <td th:text="${cartDetails.comments}"></td>
                           <td th:text="${cartDetails.scent}"></td>
                           <td th:text="${cartDetails.color}"></td>
