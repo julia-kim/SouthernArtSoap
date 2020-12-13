@@ -51,7 +51,7 @@
                       <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
                 </form>
 <!-- <form action="#" th:action="@{~/blogposts/update/{id}(id=${blogPost.id})}" th:object="${blogPost}" method="GET"> -->
-<form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="get">
+<form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
                   <!-- <input type="hidden" th:value="*{cartDetails.id}"/> -->
                   <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </form>

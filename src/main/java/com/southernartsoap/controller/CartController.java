@@ -86,12 +86,10 @@ public class CartController {
 //    }
     
 
-     @RequestMapping(value = "/cart/delete/{id}", method = RequestMethod.GET)
+    @PostMapping(value = "/cart/delete/{id}")
     public String deleteCartDetailById(@PathVariable Long id, CartDetails cartDetails, Model model) {
-        System.out.println(id); 
         cartDetailsService.removeCartDetailFromCartByCartDetailsId(id);
-            
-        return "cart";
+        return cart(model);
     }
 //    
 //    @PostMapping("/cart/update/{id}")
