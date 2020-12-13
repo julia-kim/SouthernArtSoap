@@ -13,16 +13,9 @@
 
 	<body>
 
-	<!--Modal: Login / Register Form-->
-<!-- Need to be connected to login button at the navbar!! It's initial code as a prompt how to connect. --
-<div class="text-center">
-  <a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">Launch
-    Modal LogIn/Register</a>
-</div> -->
 
-<!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
+<!--Login / Register Form, not Modal any more-->
+<div>
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -53,12 +46,13 @@
 							role="tabpanel">
 
             <!--Body-->
+            <form action="#" th:action="@{/login}" method="post">
             <div class="modal-body mb-1">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <label data-error="wrong" data-success="right"
-										for="modalLRInput10">Your email</label>
-                <input type="email" id="modalLRInput10"
+										for="modalLRInput10">Username</label>
+                <input name="username" type="text" id="modalLRInput10"
 										class="form-control form-control-sm validate">
                 
               </div>
@@ -67,15 +61,16 @@
                 <i class="fas fa-lock prefix"></i>
                 <label data-error="wrong" data-success="right"
 										for="modalLRInput11">Your password</label>
-                <input type="password" id="modalLRInput11"
+                <input name="password" type="password" id="modalLRInput11"
 										class="form-control form-control-sm validate">
                 
               </div>
               <div class="text-center mt-2">
-                <button class="btn btn-dark btn-lg btn-block">Log in <i
+                <button type="submit" class="btn btn-dark btn-lg btn-block">Log in <i
 											class="fas fa-sign-in ml-1"></i>
 									</button>
               </div>
+           </form>
             </div>
             <!--Footer-->
             <div class="modal-footer">
@@ -90,13 +85,18 @@
           <div class="tab-pane fade" id="panel8" role="tabpanel">
 
             <!--Body-->
+            <form action="#" th:action="@{/signin}" th:object="${user}" method="post">
             <div class="modal-body">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <label data-error="wrong" data-success="right"
-										for="modalLRInput12">Your email</label>
-                <input type="email" id="modalLRInput12"
-										class="form-control form-control-sm validate">
+										for="modalLRInput12">Username</label>
+                <input th:field="*{username}" type="text"
+										class="form-control form-control-sm validate"/>
+                
+              <!--   <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="validation-message"></label>
+                <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control"/> -->
+                
                 
               </div>
 
@@ -104,24 +104,42 @@
                 <i class="fas fa-lock prefix"></i>
                 <label data-error="wrong" data-success="right"
 										for="modalLRInput13">Your password</label>
-                <input type="password" id="modalLRInput13"
-										class="form-control form-control-sm validate">
+                <input th:field="*{password}" type="password"
+										class="form-control form-control-sm validate"/>
+                
+              </div>
+				<div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <label data-error="wrong" data-success="right"
+										for="modalLRInput13">Your first name</label>
+                <input th:field="*{firstName}" type="text" 
+										class="form-control form-control-sm validate"/>
+                
+                
+                </div>
+				<div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <label data-error="wrong" data-success="right"
+										for="modalLRInput13">Your last name</label>
+                <input th:field="*{lastName}" type="text" 
+										class="form-control form-control-sm validate"/>
+                
+              </div>
+              
+             <div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <label data-error="wrong" data-success="right"
+										for="modalLRInput13">Your email</label>
+                <input th:field="*{email}" type="email" 
+										class="form-control form-control-sm validate"/>
                 
               </div>
 
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <label data-error="wrong" data-success="right"
-										for="modalLRInput14">Repeat password</label>
-                <input type="password" id="modalLRInput14"
-										class="form-control form-control-sm validate">
-              </div>
-
               <div class="text-center form-sm mt-2">
-                <button class="btn btn-dark btn-lg btn-block">Sign up <i
-											class="fas fa-sign-in ml-1"></i>
+                <button type="submit" class="btn btn-dark btn-lg btn-block">Sign up<i class="fas fa-sign-in ml-1"></i>
 									</button>
               </div>
+              </form>
 
             </div>
             <!--Footer-->
@@ -129,8 +147,7 @@
               <div class="options text-right">
                 
               </div>
-              <button type="button"
-									class="btn btn-outline-secondary ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-secondary ml-auto" data-dismiss="modal">Close</button>
             </div>
           </div>
           <!--/.Panel 8-->
@@ -141,7 +158,6 @@
     <!--/.Content-->
   </div>
 </div>
-	
 	
 	
 

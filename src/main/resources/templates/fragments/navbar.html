@@ -2,12 +2,14 @@
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="/">Southern Art Soap</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a th:href="@{/products}" class="nav-link">Shop All</a></li>
-    <li class="nav-item">
-        <form class="form-inline">
+      <li class="nav-item">
+        <a th:href="@{/products}" class="nav-link">Shop All</a>
+      </li>
+      <li class="nav-item">
+        <form class="form-inline" th:action="@{/search}" method="get">
           <div class="input-group">
-            <input id="navbar-search" class="form-control rounded-pill py-2 mr-1 pr-5" type="text" placeholder="Search" aria-label="Search" />
-            <button class="btn rounded-pill border-0 ml-n5" type="button">
+            <input id="navbar-search" class="form-control rounded-pill py-2 mr-1 pr-5" type="text" placeholder="Search" aria-label="Search" name="q" th:value="*{q}"/>
+            <button class="btn rounded-pill border-0 ml-n5" type="submit" value="search">
               <i class="fa fa-search"></i>
             </button>
           </div>
@@ -20,88 +22,15 @@
       </li>
       <li class="nav-item" sec:authorize="isAuthenticated()"><a href="../logout" class="nav-link">Logout</a></li>
       <li class="nav-item" sec:authorize="!isAuthenticated()">
-        <a th:href="@{/login}" class="nav-link" data-toggle="modal" data-target="#modalLRForm">Login/Signup</a>
+        <a th:href="@{/signin}" class="nav-link">Login/Signup</a>
       </li>
       <li class="nav-item">
         <a href="@{/cart}" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
       </li>
     </ul>
 
-    <!--Modal: Login / Register Form-->
-    <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog cascading-modal" role="document">
-        <!--Content-->
-        <div class="modal-content">
-          <!--Modal cascading tabs-->
-          <div class="modal-c-tabs">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#login" role="tab"><i class="fas fa-user mr-1"></i> Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#signup" role="tab"><i class="fas fa-user-plus mr-1"></i> Sign up</a>
-              </li>
-            </ul>
-
-            <!-- Tab panels -->
-            <div class="tab-content">
-              <!--Panel 7-->
-              <div class="tab-pane fade in show active" id="login" role="tabpanel">
-                <!--Body-->
-                <div class="modal-body mb-1">
-                  <div class="md-form form-sm mb-5">
-                    <i class="fas fa-envelope prefix"></i> <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
-                    <input type="email" id="modalLRInput10" class="form-control form-control-sm validate" />
-                  </div>
-
-                  <div class="md-form form-sm mb-4">
-                    <i class="fas fa-lock prefix"></i> <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
-                    <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" />
-                  </div>
-                  <div class="text-center mt-2">
-                    <button class="btn btn-dark btn-lg btn-block">Log in <i class="fas fa-sign-in ml-1"></i></button>
-                  </div>
-                </div>
-
-                <!--Footer-->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-secondary ml-auto" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="signup" role="tabpanel">
-                <!--Body-->
-                <div class="modal-body">
-                  <div class="md-form form-sm mb-5">
-                    <i class="fas fa-envelope prefix"></i> <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
-                    <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" />
-                  </div>
-
-                  <div class="md-form form-sm mb-5">
-                    <i class="fas fa-lock prefix"></i> <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
-                    <input type="password" id="modalLRInput13" class="form-control form-control-sm validate" />
-                  </div>
-
-                  <div class="md-form form-sm mb-4">
-                    <i class="fas fa-lock prefix"></i> <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
-                    <input type="password" id="modalLRInput14" class="form-control form-control-sm validate" />
-                  </div>
-
-                  <div class="text-center form-sm mt-2">
-                    <button class="btn btn-dark btn-lg btn-block">Sign up <i class="fas fa-sign-in ml-1"></i></button>
-                  </div>
-                </div>
-                <!--Footer-->
-                <div class="modal-footer">
-                  <div class="options text-right"></div>
-                  <button type="button" class="btn btn-outline-secondary ml-auto" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<script th:inline="javascript">
+    document.forms['socialSignin'].submit()
+</script> 
   </nav>
 </header>

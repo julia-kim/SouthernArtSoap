@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		authorizeRequests().antMatchers("/cart").authenticated().and()
 		.formLogin().loginPage("/signin")
 		.loginProcessingUrl("/login").and()
-		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
+		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/");
 		
 		http.csrf().disable();

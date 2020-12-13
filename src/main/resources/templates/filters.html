@@ -22,11 +22,7 @@
         <div class="col-3">
           <!-- list of filters. It's needed to be done O_o -->
           <div class="list-group list-group-flush" th:each="category : ${categories}">
-            <a
-              th:href="@{/products/filter (category=${category})}"
-              class="list-group-item list-group-item-action"
-              th:text="${category}"
-            ></a>
+            <a th:href="@{/products/filter (category=${category})}" class="list-group-item list-group-item-action" th:text="${category}"></a>
           </div>
         </div>
 
@@ -37,7 +33,8 @@
           </div>
 
           <div class="row">
-            <div class="col-4" th:each="item : ${products}">
+          <div class="card-columns">
+            <div class="col" th:each="item : ${products}">
               <a th:href="@{/products/{id} (id=${item.id})}" class="custom-card">
                 <div class="card text-dark">
                   <img class="card-img-top" th:src="'/img/' + ${item.image[0].imgPath}" alt="Card image cap" />
@@ -47,8 +44,25 @@
                   </div>
                 </div>
               </a>
+              </div>
             </div>
           </div>
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link rounded-circle" th:if="${currentPage > 1}" th:href="@{/products (page=${currentPage - 1})}" aria-label="Previous"><i class="fas fa-angle-left"></i></a>
+              <span class="page-link rounded-circle active" th:unless="${currentPage > 1}" aria-label="Previous"><i class="fas fa-angle-left"></i></span>
+            </li>
+            <th:block th:each="i: ${#numbers.sequence(1, totalPages)}">
+              <li class="page-item">
+                <a class="page-link rounded-circle" th:if="${currentPage != i}" th:href="@{/products (page=${i})}">[[${i}]]</a>
+                <span class="page-link rounded-circle active" th:unless="${currentPage != i}">[[${i}]]</span> 
+              </li>
+            </th:block>
+            <li class="page-item">
+              <a class="page-link rounded-circle" th:if="${currentPage < totalPages}" th:href="@{/products (page=${currentPage + 1})}" aria-label="Next"><i class="fas fa-angle-right"></i></a>
+              <span class="page-link rounded-circle active" th:unless="${currentPage < totalPages}" aria-label="Next"><i class="fas fa-angle-right"></i></span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
