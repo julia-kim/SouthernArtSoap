@@ -108,12 +108,12 @@ public class CartController {
 //    }
 //    
     @PostMapping(value="/cart/add/{id}")
-    public String addToCart(@PathVariable Long id, CartDetails cartDetails) {
+    public String addToCart(@PathVariable Long id, CartDetails cartDetails, Model model) {
     	User user = userService.getLoggedInUser();
-    	cartDetails.setCart(cartService.findCartByUser(user));
+    	cartDetails.setCart(cartService.findCartByUser(user)); //i bet this crashes if the user is not logged in
     	cartDetails.setProduct(productService.findById(id));
-		cartDetailsRepository.save(cartDetails);  //probably should call the service not the repository from the controller
-    	return "cart";
+        cartDetailsRepository.save(cartDetails);  //probably should call the service not the repository from the controller
+        return cart(model);
     }
     
 
