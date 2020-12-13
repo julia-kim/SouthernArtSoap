@@ -1,5 +1,0 @@
-execute goals: process-classes org.codehaus.mojo:exec-maven-plugin:1.5.0:exec
-set properties:
-exec.args=-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath ${packageClassName}
-exec.executable=java
-jpda.listen=true
