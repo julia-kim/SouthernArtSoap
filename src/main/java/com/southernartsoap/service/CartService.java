@@ -5,10 +5,13 @@
  */
 package com.southernartsoap.service;
 
+import com.southernartsoap.model.CartDetails;
 import com.southernartsoap.repository.CartRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.southernartsoap.repository.CartDetailsRepository;
+import java.util.List;
 
 /**
  *
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class CartService {
     @Autowired
     private CartRepository cartRepository;
+
     
     
 }

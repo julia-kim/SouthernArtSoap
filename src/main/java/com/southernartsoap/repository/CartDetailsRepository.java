@@ -19,5 +19,8 @@ public interface CartDetailsRepository extends CrudRepository<CartDetails, Long>
     //we always want all the CartDetails because we want the entire shopping cart
 //    @Override //is this needed?
     List<CartDetails> findAll();
+    //do I need @override?
+    //probably don't need @ovverride because I am not modifying how it works
+    void deleteById(Long id);
     
 }

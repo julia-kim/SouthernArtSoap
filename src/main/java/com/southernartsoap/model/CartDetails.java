@@ -26,13 +26,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
+@ToString
 public class CartDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,6 +50,7 @@ public class CartDetails {
     //cart ID with ManyToOne
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cart_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Cart cart;
     
     @Min(0)

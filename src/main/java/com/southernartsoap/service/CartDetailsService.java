@@ -19,7 +19,19 @@ import com.southernartsoap.repository.CartDetailsRepository;
 public class CartDetailsService {
     @Autowired
     private CartDetailsRepository cartDetailsRepository;
+    
     public List<CartDetails> findAllCartDetailses(){ //CartDetails or CartDetailses?
       return cartDetailsRepository.findAll();
     }
+    
+        
+    
+    public void removeCartDetailFromCartByCartDetailsId(Long cartDetailsId){ //CartDetails or CartDetailses?
+       //remove cartdetails from cart
+
+
+       //delete cartdetails
+       //should also remove from cart through cascading
+      cartDetailsRepository.deleteById(cartDetailsId);
+   }
 }
