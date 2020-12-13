@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.southernartsoap.model.User;
-
+import com.southernartsoap.repository.CartRepository;
 import com.southernartsoap.repository.UserRepository;
 import com.southernartsoap.model.Cart;
 
@@ -19,6 +19,8 @@ import com.southernartsoap.model.Cart;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired 
+    private CartRepository cartRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -28,7 +30,10 @@ public class UserService implements UserDetailsService {
 
     public void saveNew(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        user = userRepository.save(user);
+        Cart cart = new Cart();
+        cart.setUser(user);
+        cartRepository.save(cart);
     }
     
 //    public User saveNewUser(User user) {
