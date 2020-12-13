@@ -39,7 +39,6 @@ public class MainController {
 		model.addAttribute("totalPages", productPage.getTotalPages());
 		model.addAttribute("products", products);
 		return "filters";
-
 	}
 
 	@ModelAttribute(value = "categories")
@@ -58,7 +57,7 @@ public class MainController {
 		model.addAttribute("products", filtered);
 		return "filters";
 	}
-  
+
 	@GetMapping(value = "/search")
 	public String search(@RequestParam(value = "q", required = false) String query, Model model) {
 		List<Product> results = new ArrayList<>();
@@ -69,6 +68,7 @@ public class MainController {
 		}
 		return "search";
 	}
+
 
 	@GetMapping(value = "/about")
 	public String about() {

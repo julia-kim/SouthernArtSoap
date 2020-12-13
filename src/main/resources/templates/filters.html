@@ -22,7 +22,8 @@
         <div class="col-3">
           <!-- list of filters. It's needed to be done O_o -->
           <div class="list-group list-group-flush" th:each="category : ${categories}">
-            <a th:href="@{/products/filter (category=${category})}" class="list-group-item list-group-item-action text-capitalize" th:text="${category}"></a>
+            <a th:href="@{/products/filter (category=${category})}" class="list-group-item list-group-item-action" th:text="${category}"></a>
+
           </div>
         </div>
 
@@ -33,7 +34,8 @@
           </div>
 
           <div class="row">
-            <div class="col-4" th:each="item : ${products}">
+          <div class="card-columns">
+            <div class="col" th:each="item : ${products}">
               <a th:href="@{/products/{id} (id=${item.id})}" class="custom-card">
                 <div class="card text-dark">
                   <img class="card-img-top" th:src="'/img/' + ${item.image[0].imgPath}" alt="Card image cap" />
@@ -43,6 +45,7 @@
                   </div>
                 </div>
               </a>
+              </div>
             </div>
           </div>
           <ul class="pagination">

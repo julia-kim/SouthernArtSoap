@@ -17,8 +17,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +39,7 @@ public class Cart {
     private Long id;
     
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //does this map to user or usermodel?
+    @JoinColumn(name = "user_id") 
     private User user;
     
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
