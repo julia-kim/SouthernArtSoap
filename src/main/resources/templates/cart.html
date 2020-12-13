@@ -58,7 +58,7 @@
                 <form action="#" th:action="@{/cart/update/{id}(id=${cartDetails.id})}" th:object="${cartDetails}" method="post">
                     <td class="col-sm-1 col-md-1">
                     <!-- insert th:field for this th:field="*{quantity}"  -->
-                      <input type="text" class="form-control text-center"  name="newQuantity" th:value="${cartDetails.getQuantity()}" />
+                      <input type="number" class="form-control text-center"  step="1" min="1" name="newQuantity" th:value="${cartDetails.getQuantity()}" />
                     </td>
                     <!-- this is a better way to get the images and means we don't need to add an ArrayList<Image> to the model from the  controller   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
