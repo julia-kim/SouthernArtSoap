@@ -35,6 +35,23 @@
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a href="#"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
+                      <!--  Putting a table within a table to display comments, scenet, and color  -->
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Comment</th>
+                            <th>Scent</th>
+                            <th>Color</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td th:text="${cartDetails.comments}"></td>
+                          <td th:text="${cartDetails.scent}"></td>
+                          <td th:text="${cartDetails.color}"></td>
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </td>
@@ -45,11 +62,13 @@
                     </td>
                     <!-- this is a better way to get the images and means we don't need to add an ArrayList<Image> to the model from the  controller   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
+                    <td class="col-sm-1 col-md-1" th:text="${#numbers.formatCurrency(cartDetails.product.price)}">
+                </td>
                     <td class="col-sm-1 col-md-1 text-center" th:text="${#numbers.formatCurrency(cartDetails.getQuantity * cartDetails.getProduct.getPrice)}"></td>
                     <td class="col-sm-1 col-md-1">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>
                 </form>
-<form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
+                <form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
                   <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </form>
                     </td>
