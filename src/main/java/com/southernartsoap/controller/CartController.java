@@ -50,46 +50,34 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 
-	@GetMapping(value = "/cart")
-	public String cart(Model model) {
-		// initializing it like this allows us to check if it's empty in the cart.html
-		// template
-		User user = userService.getLoggedInUser();
-		ArrayList<CartDetails> cartDetailses = new ArrayList<CartDetails>();
-		ArrayList<Image> cartImages = new ArrayList<Image>();
-		if (user != null) { // so cart doesn't crash if no one is logged in
-			cartDetailses = (ArrayList) cartDetailsService.findAllCartDetailsesByCartId(user.getCart().getId());
-		}
-
-		double totalPrice = 0; // passsed to thymeleaf to b/c thymeleaf is a pain
-		for (CartDetails cartDetails : cartDetailses) {
-			Long productId = cartDetails.getProduct().getId();
-			Image image = productService.findFirstProductImagesByProductId(productId);
-			cartImages.add(image);
-			totalPrice += cartDetails.getProduct().getPrice() * cartDetails.getQuantity();
-		}
-		model.addAttribute("totalPrice", totalPrice);
-		model.addAttribute("cartDetailses", cartDetailses);
-		model.addAttribute("images", cartImages);
-		// Stripe checkout
-		model.addAttribute("amount", 50 * 100); // in cents  // what is this referring to? why is the amount set to 5000???
-		model.addAttribute("stripePublicKey", stripePublicKey);
-		model.addAttribute("currency", ChargeRequest.Currency.USD);
-
-		return "cart";
+    @GetMapping(value="/cart")
+    public String cart(Model model){
+       //initializing it like this allows us to check if it's empty in the cart.html template
+       User user = userService.getLoggedInUser();
+       ArrayList<CartDetails> cartDetailses = new ArrayList<CartDetails>();
+       ArrayList<Image> cartImages = new ArrayList<Image>(); 
+       if(user!=null){ //so cart doesn't crash if no one is logged in    
+            cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailsesByCartIdSortedByDescendingDateCreated(user.getCart().getId());    
+       }
+       
+        
+        
+        double totalPrice = 0; //passsed to thymeleaf to b/c thymeleaf is a pain
+        for(CartDetails cartDetails : cartDetailses){
+            Long productId = cartDetails.getProduct().getId();
+            Image image = productService.findFirstProductImagesByProductId(productId); 
+            cartImages.add(image);
+            totalPrice+= cartDetails.getProduct().getPrice() * cartDetails.getQuantity();
+        }
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("cartDetailses", cartDetailses);
+        model.addAttribute("images", cartImages);
+        	// Stripe checkout
+        model.addAttribute("amount", 50 * 100); // in cents  // what is this referring to? why is the amount set to 5000???
+        model.addAttribute("stripePublicKey", stripePublicKey);
+        model.addAttribute("currency", ChargeRequest.Currency.USD);
+	    	return "cart";
 	}
-
-	// @PostMapping("/cart/delete")
-	// public String deleteItem(@ModelAttribute CartDetails cartDetails,
-	// BindingResult bindingResult, Model model){
-	// System.out.println(cartDetails); //somehow this isn't being passed in?
-	// if(!bindingResult.hasErrors()){
-	// cartDetailsService.removeCartDetailFromCartByCartDetailsId(cartDetails.getId());
-	//
-	// }
-	//
-	// return "cart";
-	// }
 
 	@PostMapping(value = "/cart/delete/{id}")
 	public String deleteCartDetailById(@PathVariable Long id, CartDetails cartDetails, Model model) {
@@ -108,9 +96,19 @@ public class CartController {
 		// change quantity
 		// cartDetails.setQuantity(newQuantity);
 		cartDetailsService.updateCartDeailsQuantity(id, newQuantity);
-
 		return "redirect:/cart";
 	}
+    
+//    @PostMapping("/cart/delete")
+//    public String deleteItem(@ModelAttribute CartDetails cartDetails, BindingResult bindingResult, Model model){
+//        System.out.println(cartDetails); //somehow this isn't being passed in?
+//        if(!bindingResult.hasErrors()){
+//            cartDetailsService.removeCartDetailFromCartByCartDetailsId(cartDetails.getId());
+//            
+//        }
+//    
+//        return "cart";
+//    }
 
 	@PostMapping(value = "/cart/add/{id}")
 	public String addToCart(@PathVariable Long id, CartDetails cartDetails, Model model) {

@@ -81,8 +81,8 @@
             <form th:action="@{/cart/add/{id} (id=${product.id})}" th:object="${cartDetails}" method="post">
               <div class="row">
                 <p>Scent</p>
-                <select class="browser-default custom-select" th:field="*{scent}">
-                  <option value="" disabled selected>Choose a scent</option>
+                <select class="browser-default custom-select" name="scent" id="scent" required="required"> <!-- th:field="*{scent}" -->
+                  <option value="" th:selected="selected" th:disabled="disabled">Choose a scent</option>
                   <option value="banana">banana</option>
                   <option value="chocolate">chocolate</option>
                   <option value="coconut">coconut</option>
@@ -101,8 +101,8 @@
               <br />
               <div class="row">
                 <p>Color</p>
-                <select class="browser-default custom-select" th:field="*{color}">
-                  <option  value="" disabled selected>Choose a color</option>
+                <select class="browser-default custom-select" name="color" id="color" required="required"> <!-- th:field="*{color}" --> 
+                  <option  value="" th:selected="selected" th:disabled="disabled">Choose a color</option>
                   <option value="black">black</option>
                   <option value="blue">blue</option>
                   <option value="green">green</option>
@@ -122,24 +122,27 @@
                 <!-- I tryed to implement input spinner, but failed. Going to wishlist-->
                 <p>Quantity</p>
                 <select class="browser-default custom-select" th:field="*{quantity}">
-                <option value="0" selected>0</option>
-                  <option value="1">1</option>
+                <option value="1" selected>1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="7">7</option>
+                  <option value="8">8</option>
                 </select>
               </div>
               <br />
               <br />
               <div class="row">
+              <p>Your comments</p>
                <textarea class="form-control" placeholder="Enter text here" rows="5" th:field="*{comments}"/>
               </div>
+              <br>
               <div class="row">   
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add to cart</button>
               </div>
+              <br>
             </form>
           </div>
         </div>

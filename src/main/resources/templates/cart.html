@@ -34,13 +34,33 @@
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a href="#"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
+                      <!--  Putting a table within a table to display comments, scenet, and color  -->
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Comment</th>
+                            <th>Scent</th>
+                            <th>Color</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <div th:if="${cartDetails.comments.isEmpty}">
+                            <td>N/A</td>
+                          </div>
+                          <td th:text="${cartDetails.comments}"></td>
+                          <td th:text="${cartDetails.scent}"></td>
+                          <td th:text="${cartDetails.color}"></td>
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </td>
                 <form action="#" th:action="@{/cart/update/{id}(id=${cartDetails.id})}" th:object="${cartDetails}" method="post">
                     <td class="col-sm-1 col-md-1">
                     <!-- insert th:field for this th:field="*{quantity}"  -->
-                      <input type="text" class="form-control text-center"  name="newQuantity" th:value="${cartDetails.getQuantity()}" />
+                      <input type="number" class="form-control text-center"  step="1" min="1" name="newQuantity" th:value="${cartDetails.getQuantity()}" />
                     </td>
                     <!-- this is a better way to get the images and means we don't need to add an ArrayList<Image> to the model from the  controller   -->
                     <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
@@ -51,7 +71,7 @@
                     
                 </form>
                 <form action="#" th:action="@{/cart/delete/{id}(id=${cartDetails.id})}" th:object:"${CartDetails}" method="post">
-                  <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+                  <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                 </form>
               </tr>
               <!--  end of loop  -->
