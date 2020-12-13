@@ -35,6 +35,14 @@
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a href="#"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
+                      <!--  Putting a table within a table to display comments, scenet, and color  -->
+                      <table>
+                        <tr>
+                          <td th:text="${cartDetails.comments}"></td>
+                          <td th:text="${cartDetails.scent}"></td>
+                          <td th:text="${cartDetails.color}"></td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </td>
