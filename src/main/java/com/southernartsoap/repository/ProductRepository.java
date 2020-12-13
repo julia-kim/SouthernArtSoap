@@ -17,11 +17,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 	
 	Page<Product> findAll(Pageable pageable);
 
-
-	Page<Product> findAll(Pageable pageable);
-
-
-
 	Page<Product> findByCategory(String category, Pageable pageable);
 
 	@Query("SELECT DISTINCT p.category FROM Product p")
