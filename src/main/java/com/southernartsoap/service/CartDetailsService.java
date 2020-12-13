@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.southernartsoap.model.CartDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.southernartsoap.repository.CartDetailsRepository;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +25,19 @@ public class CartDetailsService {
       return cartDetailsRepository.findAll();
     }
     
+    
+    //done this way because I don't know SQL and spring well enough to make a query
+    //refactor this abomination
+    public List<CartDetails> findAllCartDetailsesByCartId(Long cartId){
+        ArrayList<CartDetails> allCartDetailses = (ArrayList) cartDetailsRepository.findAll(); //there must be a better way to do this
+        ArrayList<CartDetails> currentUserCartDetailses = new ArrayList<>(); 
+        for(CartDetails cartDetails : allCartDetailses){
+            if(cartId == cartDetails.getCart().getId()){
+                currentUserCartDetailses.add(cartDetails);
+            }
+        }
+        return currentUserCartDetailses;
+    }
         
     
     public void removeCartDetailFromCartByCartDetailsId(Long cartDetailsId){ //CartDetails or CartDetailses?

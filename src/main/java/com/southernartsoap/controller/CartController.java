@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.southernartsoap.service.UserService;
+import com.southernartsoap.repository.CartDetailsRepository;
+import com.southernartsoap.service.CartService;
 
 /**
  *
@@ -35,26 +38,29 @@ public class CartController {
     CartDetailsService cartDetailsService;
     @Autowired
     ProductService productService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    CartDetailsRepository cartDetailsRepository;
+    @Autowired
+    CartService cartService;
+    
 
     
     
     @GetMapping(value="/cart")
     public String cart(Model model){
        //initializing it like this allows us to check if it's empty in the cart.html template
+       User user = userService.getLoggedInUser();
        ArrayList<CartDetails> cartDetailses = new ArrayList<CartDetails>();
-       ArrayList<Image> cartImages = new ArrayList<Image>();
-       cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailses();        
+       ArrayList<Image> cartImages = new ArrayList<Image>(); 
+       if(user!=null){ //so cart doesn't crash if no one is logged in    
+            cartDetailses =  (ArrayList) cartDetailsService.findAllCartDetailsesByCartId(user.getCart().getId());    
+       }
+       
         
-        //get the images that map to the cart
-        //adding 3 items manually for testing
-//        for(int i=1; i < 4; i++){ //product ID starts at 1
-//            Product product = productService.findById(Long.valueOf(i));
-//            Cart cart = new Cart(); //might break?
-//            cartDetailses.add(new CartDetails(Long.valueOf(i), product, cart, 2, "Make it rain", "Roses", "green"));
-//            
-//        }
         
-        double totalPrice = 0; //passsed to thymeleaf to b/c thymleaf is a pain
+        double totalPrice = 0; //passsed to thymeleaf to b/c thymeleaf is a pain
         for(CartDetails cartDetails : cartDetailses){
             Long productId = cartDetails.getProduct().getId();
             Image image = productService.findFirstProductImagesByProductId(productId); 
@@ -68,16 +74,16 @@ public class CartController {
         return "cart";
     }
     
-    @PostMapping("/cart/delete")
-    public String deleteItem(@ModelAttribute CartDetails cartDetails, BindingResult bindingResult, Model model){
-        System.out.println(cartDetails); //somehow this isn't being passed in?
-        if(!bindingResult.hasErrors()){
-            cartDetailsService.removeCartDetailFromCartByCartDetailsId(cartDetails.getId());
-            
-        }
-    
-        return "cart";
-    }
+//    @PostMapping("/cart/delete")
+//    public String deleteItem(@ModelAttribute CartDetails cartDetails, BindingResult bindingResult, Model model){
+//        System.out.println(cartDetails); //somehow this isn't being passed in?
+//        if(!bindingResult.hasErrors()){
+//            cartDetailsService.removeCartDetailFromCartByCartDetailsId(cartDetails.getId());
+//            
+//        }
+//    
+//        return "cart";
+//    }
     
 
      @RequestMapping(value = "/cart/delete/{id}", method = RequestMethod.GET)
@@ -101,14 +107,14 @@ public class CartController {
 //        return "cart";
 //    }
 //    
-//    @PostMapping(value="/cart/add/{id}")
-//    public String addToCart(@PathVariable Long id, CartDetails cartDetails) {
-//    	User user = userService.getLoggedInUser();
-//    	cartDetails.setCart(cartService.findCartByUser(user));
-//    	cartDetails.setProduct(productService.findById(id));
-//		cartDetailsRepository.save(cartDetails);
-//    	return "cart";
-//    }
+    @PostMapping(value="/cart/add/{id}")
+    public String addToCart(@PathVariable Long id, CartDetails cartDetails) {
+    	User user = userService.getLoggedInUser();
+    	cartDetails.setCart(cartService.findCartByUser(user));
+    	cartDetails.setProduct(productService.findById(id));
+		cartDetailsRepository.save(cartDetails);  //probably should call the service not the repository from the controller
+    	return "cart";
+    }
     
 
     
