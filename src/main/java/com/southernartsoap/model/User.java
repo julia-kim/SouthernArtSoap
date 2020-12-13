@@ -53,11 +53,6 @@ public class User implements UserDetails{
 	  @Transient
 	  private Collection<GrantedAuthority> authorities = null;
 	
-
-	  
-	  
-	  
-	
 	private int active;
 	
 	@CreationTimestamp 
@@ -87,9 +82,8 @@ public class User implements UserDetails{
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
         
-        @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        @JoinColumn(name = "cart_id")
-        private Cart cart;
-	
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Cart cart;
+
 	
 }

@@ -6,6 +6,8 @@
 package com.southernartsoap.repository;
 
 import com.southernartsoap.model.Cart;
+import com.southernartsoap.model.User;
+
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +15,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author jared
  */
 public interface CartRepository extends CrudRepository<Cart, Long> {
-    
+	Cart findCartByUser(User user);
 }
