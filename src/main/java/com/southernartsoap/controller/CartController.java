@@ -17,6 +17,7 @@ import com.southernartsoap.model.Image;
 import com.southernartsoap.service.ProductService;
 import com.southernartsoap.model.Product;
 import com.southernartsoap.model.Cart;
+import com.southernartsoap.model.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,7 +79,7 @@ public class CartController {
         return "cart";
     }
     
-    //this isn't hitting the endpoint?
+
      @RequestMapping(value = "/cart/delete/{id}", method = RequestMethod.GET)
     public String deleteCartDetailById(@PathVariable Long id, CartDetails cartDetails, Model model) {
         System.out.println(id); 
@@ -87,11 +88,26 @@ public class CartController {
         return "cart";
     }
 //    
-//    @PostMapping("/cart")
+//    @PostMapping("/cart/update/{id}")
 //    public String updateQuantity(){
 //        
 //        
 //        return "cart";
+//    }
+//    
+//        @GetMapping(value="/cart")
+//    public String cart(Model model){
+//    	model.addAttribute("cartDetails", cartService.findAll());
+//        return "cart";
+//    }
+//    
+//    @PostMapping(value="/cart/add/{id}")
+//    public String addToCart(@PathVariable Long id, CartDetails cartDetails) {
+//    	User user = userService.getLoggedInUser();
+//    	cartDetails.setCart(cartService.findCartByUser(user));
+//    	cartDetails.setProduct(productService.findById(id));
+//		cartDetailsRepository.save(cartDetails);
+//    	return "cart";
 //    }
     
 

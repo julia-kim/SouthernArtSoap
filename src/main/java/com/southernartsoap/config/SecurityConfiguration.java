@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		authorizeRequests().antMatchers("/cart2").authenticated().and() //changed to cart2 to bypass security while testing cartcontroller
 		.formLogin().loginPage("/signin")
 		.loginProcessingUrl("/login").and()
-		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
+		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/");
 		
 		http.csrf().disable();

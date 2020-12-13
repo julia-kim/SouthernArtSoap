@@ -45,6 +45,7 @@
                       <input type="email" class="form-control text-center"  th:value="${cartDetails.getQuantity()}" />
                     </td>
                     <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getProduct.getPrice()}+'0'"></td> <!--Append 0 for formatting. Probably a superior solution with a thymleaf format option beginning with #   -->
+                    <!--<img th:src="'/img/' + ${cartDetail.product.image[0].imgPath}" class="media-image img-thumbnail" />-->
                     <td class="col-sm-1 col-md-1 text-center" th:text="'$'+${cartDetails.getQuantity() * cartDetails.getProduct.getPrice()}+'0'"></td>
                     <td class="col-sm-1 col-md-1">
                       <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i></button>

@@ -70,68 +70,72 @@
               <br />
               <div>
                 <p>Description</p>
-                <p th:text="${product.description}"></p>
+                <p class="p-description" th:text="${product.description}"></p>
               </div>
             </div>
             <br />
-            <div class="row">
-              <p>Scent</p>
-              <select class="browser-default custom-select">
-                <option selected>Choose a scent</option>
-                <option value="chocolate">chocolate</option>
-                <option value="coconut">coconut</option>
-                <option value="lavender">lavender</option>
-                <option value="lemon">lemon</option>
-                <option value="oatmeal & honey">oatmeal & honey</option>
-                <option value="orange">orange</option>
-                <option value="peony">peony</option>
-                <option value="peppermint">peppermint</option>
-                <option value="pineapple">pineapple</option>
-                <option value="pumpkin spice">pumpkin spice</option>
-                <option value="rose">rose</option>
-                <option value="vanilla">vanilla</option>
-              </select>
-            </div>
-            <br />
-            <div class="row">
-              <p>Color</p>
-              <select class="browser-default custom-select">
-                <option selected>Choose a color</option>
-                <option value="black">black</option>
-                <option value="blue">blue</option>
-                <option value="green">green</option>
-                <option value="orange">orange</option>
-                <option value="pastel blue">pastel blue</option>
-                <option value="pastel pink">pastel pink</option>
-                <option value="pastel purple">pastel purple</option>
-                <option value="purple">purple</option>
-                <option value="red">red</option>
-                <option value="rose gold">rose gold</option>
-                <option value="white">white</option>
-                <option value="yellow">yellow</option>
-              </select>
-            </div>
-            <br />
-            <div class="row">
-              <!-- I tryed to implement input spinner, but failed. Going to wishlist-->
-              <p>Quantity</p>
-              <select class="browser-default custom-select">
-                <option selected>1</option>
-                <!-- Connect tags -->
-                <option value="1">2</option>
-                <option value="2">3</option>
-                <option value="3">4</option>
-                <option value="4">5</option>
-                <option value="5">6</option>
-                <option value="6">7</option>
-                <option value="7">8</option>
-              </select>
-            </div>
-            <br />
-            <br />
-            <div class="row">
-              <button type="button" class="btn btn-dark btn-lg btn-block">Add to cart</button>
-            </div>
+            <form th:action="@{/cart/add/{id} (id=${product.id})}" th:object="${cartDetails}" method="post">
+              <div class="row">
+                <p>Scent</p>
+                <select class="browser-default custom-select" th:field="*{scent}">
+                  <option value="" disabled selected>Choose a scent</option>
+                  <option value="chocolate">chocolate</option>
+                  <option value="coconut">coconut</option>
+                  <option value="lavender">lavender</option>
+                  <option value="lemon">lemon</option>
+                  <option value="oatmeal & honey">oatmeal & honey</option>
+                  <option value="orange">orange</option>
+                  <option value="peony">peony</option>
+                  <option value="peppermint">peppermint</option>
+                  <option value="pineapple">pineapple</option>
+                  <option value="pumpkin spice">pumpkin spice</option>
+                  <option value="rose">rose</option>
+                  <option value="vanilla">vanilla</option>
+                </select>
+              </div>
+              <br />
+              <div class="row">
+                <p>Color</p>
+                <select class="browser-default custom-select" th:field="*{color}">
+                  <option  value="" disabled selected>Choose a color</option>
+                  <option value="black">black</option>
+                  <option value="blue">blue</option>
+                  <option value="green">green</option>
+                  <option value="orange">orange</option>
+                  <option value="pastel blue">pastel blue</option>
+                  <option value="pastel pink">pastel pink</option>
+                  <option value="pastel purple">pastel purple</option>
+                  <option value="purple">purple</option>
+                  <option value="red">red</option>
+                  <option value="rose gold">rose gold</option>
+                  <option value="white">white</option>
+                  <option value="yellow">yellow</option>
+                </select>
+              </div>
+              <br />
+              <div class="row">
+                <!-- I tryed to implement input spinner, but failed. Going to wishlist-->
+                <p>Quantity</p>
+                <select class="browser-default custom-select" th:field="*{quantity}">
+                <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                </select>
+              </div>
+              <br />
+              <br />
+              <div class="row">
+               <textarea class="form-control" placeholder="Enter text here" rows="5" th:field="*{comments}"/>
+              </div>
+              <div class="row">   
+                <button type="submit" class="btn btn-dark btn-lg btn-block">Add to cart</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

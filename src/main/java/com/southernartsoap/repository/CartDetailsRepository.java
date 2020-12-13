@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,5 +23,4 @@ public interface CartDetailsRepository extends CrudRepository<CartDetails, Long>
     //do I need @override?
     //probably don't need @ovverride because I am not modifying how it works
     void deleteById(Long id);
-    
 }
