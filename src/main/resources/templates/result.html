@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Checkout Result | Southern Art Soap</title>
+    <div th:replace="fragments/head"></div>
+  </head>
+  <body>
+    <div th:replace="fragments/navbar"></div>
+    <div class="container">
+      <h3 th:if="${error}" th:text="${error}"></h3>
+      <div th:unless="${error}">
+        <h3>Success!</h3>
+        <div>Id.: <span th:text="${id}" /></div>
+        <div>Status: <span th:text="${status}" /></div>
+        <div>Charge id.: <span th:text="${chargeId}" /></div>
+        <div>Balance transaction id.: <span th:text="${balance_transaction}" /></div>
+      </div>
+      <a th:href="@{/}">Check out more of our delicious soaps!</a>
+    </div>
+    <div th:replace="fragments/footer"></div>
+    <div th:replace="fragments/scripts"></div>
+  </body>
+</html>
