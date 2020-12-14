@@ -28,7 +28,7 @@ html {
 
 body {
   background-color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
 }
 
@@ -48,6 +48,29 @@ body {
 
 a {
   color: #05aba9;
+}
+
+/* === STRIPE PAY BUTTON === */
+button.stripe-button-el,
+button.stripe-button-el span,
+button.stripe-button-el:active,
+button.stripe-button-el:active span,
+button.stripe-button-el:not(:disabled):active,
+button.stripe-button-el:not(:disabled):active span {
+  color: #fff;
+  background-color: #333 !important;
+  background-image: none !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  line-height: 1.42857143 !important;
+  border-radius: 4px !important;
+  margin-bottom: 0 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
 }
 
 /* === TYPOGRAPHY === */
@@ -102,7 +125,7 @@ h5 {
 }
 
 #navbar-search {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .breadcrumb {
@@ -110,24 +133,12 @@ h5 {
   border-radius: 0;
 }
 
-
 /* === PAGINATION === */
 .pagination > .page-item > .page-link,
 .pagination > .page-item > .page-link {
-	background-color: #fff;
-	border-color: transparent;
-  color: #432B27;
-  font-weight: 700;
-  margin-right: 5px;
-}
-
-
-/* === PAGINATION === */
-.pagination > .page-item > .page-link,
-.pagination > .page-item > .page-link {
-	background-color: #fff;
-	border-color: transparent;
-  color: #432B27;
+  background-color: #fff;
+  border-color: transparent;
+  color: #432b27;
   font-weight: 700;
   margin-right: 5px;
 }
@@ -186,11 +197,9 @@ h5 {
 }
 
 .card-link {
-	color: #fff;
-	font-family: "Josefin Sans", sans-serif;
-	text-decoration: none;
-
-
+  color: #fff;
+  font-family: "Josefin Sans", sans-serif;
+  text-decoration: none;
 }
 
 /* === PRODUCT PAGE === */
