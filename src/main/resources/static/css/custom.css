@@ -81,7 +81,7 @@ h4,
 h5,
 h6,
 th {
-  font-family: Josefin Sans, serif;
+  font-family: Ibarra Real Nova;
 }
 
 h4 {
@@ -89,9 +89,15 @@ h4 {
 }
 
 h5 {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 600;
 }
+
+/* p {
+font-family: Quicksand
+} */
+
+
 
 /* === NAVBAR === */
 .navbar {
@@ -140,6 +146,7 @@ h5 {
   border-color: transparent;
   color: #432b27;
   font-weight: 700;
+  
   margin-right: 5px;
 }
 
@@ -157,6 +164,7 @@ h5 {
   border-radius: 15px;
   max-height: 150px;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .truncate {
@@ -222,6 +230,11 @@ ol {
 .p-description {
   white-space: pre-line;
 }
+
+.btn-primary {
+	background-color: #05aba9;
+	}
+
 
 /* === SHOPPING CART === */
 .img-thumbnail {

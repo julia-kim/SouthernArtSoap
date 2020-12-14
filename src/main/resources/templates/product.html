@@ -60,11 +60,11 @@
           <div class="col-6">
             <div>
               <div>
-                <h4 th:text="${product.name}"></h4>
+                <h3 th:text="${product.name}"></h3>
               </div>
 
               <div>
-                <h5 th:text="'$' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></h5>
+                <b><h2 th:text="'$' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></h2></b>
               </div>
 
               <br />
@@ -140,6 +140,20 @@
               </div>
               <br>
               <div class="row">   
+                
+                <!--  broken prototype for conditional path, please don't delete  -->
+                  <!-- <div align="center" th:if="${loggedInUser == null}">
+                <h4 style="color: red">Login unsuccessful.</h4>
+              
+              <div th:if="${loggedInUser}">
+							<button type="submit" class="btn btn-dark btn-lg btn-block">Add to cart</button>
+						</div>
+						<div th:unless="${loggedInUser}">
+							<div align="center" th:if="${loggedInUser == null}">
+                <h4 style="color: red">you need to log in to add products to the cart</h4>
+						</div>  -->
+                
+                
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add to cart</button>
               </div>
               <br>
