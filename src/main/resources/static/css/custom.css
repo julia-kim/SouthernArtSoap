@@ -50,6 +50,16 @@ a {
   color: #05aba9;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /* === STRIPE PAY BUTTON === */
 button.stripe-button-el,
 button.stripe-button-el span,
