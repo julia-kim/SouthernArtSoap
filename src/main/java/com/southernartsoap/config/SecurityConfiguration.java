@@ -29,15 +29,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.
-		authorizeRequests().antMatchers("/cart2").authenticated().and() //changed to cart2 to bypass security while testing cartcontroller
+		authorizeRequests().antMatchers("/cart").authenticated().and()
 		.formLogin().loginPage("/signin")
 		.loginProcessingUrl("/login").and()
 		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/");
-		
+		// remove the following before deployment (needed security stuff)
 		http.csrf().disable();
 	    http.headers().frameOptions().disable();
-
 	}
 	
 }
