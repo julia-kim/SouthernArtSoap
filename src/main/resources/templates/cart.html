@@ -30,30 +30,18 @@
                   <div class="media">
                     <a class="thumbnail pull-left" th:href="@{/products/{id} (id=${cartDetails.product.id})}">
                       <!--appending Stat.index to a value in a thymeleaf for each loop gives the index value   -->
-                      <img class="media-image img-thumbnail" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
+                      <img class="media-image img-thumbnail pr-2" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a th:href="@{/products/{id} (id=${cartDetails.product.id})}"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
                       <!--  Putting a table within a table to display comments, scent, and color  -->
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Comment</th>
-                            <th>Scent</th>
-                            <th>Color</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <div th:if="${cartDetails.comments.isEmpty}">
-                            <td>N/A</td>
-                          </div>
-                          <td th:text="${cartDetails.comments}"></td>
-                          <td th:text="${cartDetails.scent}"></td>
-                          <td th:text="${cartDetails.color}"></td>
-                        </tr>
-                        </tbody>
-                      </table>
+                      <span class="pr-3"><strong>Scent:</strong> <span th:text="${cartDetails.scent}"></span></span>
+                      <span><strong>Color:</strong> <span th:text="${cartDetails.color}"></span></span>
+                      <div>
+                        <strong>Comments: </strong>
+                        <span th:if="${cartDetails.comments.isEmpty}">N/A</span>
+                        <p th:unless="${cartDetails.comments.isEmpty}" th:text="${cartDetails.comments}"></p>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -116,7 +104,7 @@
           
         </div>
       </div>
-      <!-- <div th:if="${userCart.size() == 0}">Nothing in your cart yet.</div> -->
+      </div>
     </div>
     <div th:replace="fragments/footer"></div>
     <div th:replace="fragments/scripts"></div>
