@@ -28,12 +28,12 @@
               <tr th:each="cartDetails :${cartDetailses}">
                 <td class="col-8">
                   <div class="media">
-                    <a class="thumbnail pull-left" href="#">
+                    <a class="thumbnail pull-left" th:href="@{/products/{id} (id=${cartDetails.product.id})}">
                       <!--appending Stat.index to a value in a thymeleaf for each loop gives the index value   -->
                       <img class="media-image img-thumbnail" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
                     </a>
                     <div class="media-body">
-                      <h4 class="media-heading"><a href="#"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
+                      <h4 class="media-heading"><a th:href="@{/products/{id} (id=${cartDetails.product.id})}"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
                       <!--  Putting a table within a table to display comments, scenet, and color  -->
                       <table>
                         <thead>
