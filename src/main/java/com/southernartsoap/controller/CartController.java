@@ -108,6 +108,9 @@ public class CartController {
 	@PostMapping(value = "/cart/add/{id}")
 	public String addToCart(@PathVariable Long id, CartDetails cartDetails, Model model) {
 		User user = userService.getLoggedInUser();
+		if (user == null) {
+			return "redirect:/signin";
+		}
 		cartDetails.setCart(cartService.findCartByUser(user)); // i bet this crashes if the user is not logged in
 		cartDetails.setProduct(productService.findById(id));
 		cartDetailsRepository.save(cartDetails); // probably should call the service not the repository from the
