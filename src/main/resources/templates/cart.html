@@ -30,7 +30,7 @@
                   <div class="media">
                     <a class="thumbnail pull-left" th:href="@{/products/{id} (id=${cartDetails.product.id})}">
                       <!--appending Stat.index to a value in a thymeleaf for each loop gives the index value   -->
-                      <img class="media-image img-thumbnail pr-2" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
+                      <img class="media-image img-thumbnail mr-2" th:src="@{${'/img/' + images[cartDetailsStat.index].getImgPath()}}" /> 
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading"><a th:href="@{/products/{id} (id=${cartDetails.product.id})}"><span th:text="${cartDetails.getProduct.getName()}"></span></a></h4> <!--  product name -->
