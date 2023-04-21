@@ -46,7 +46,7 @@ git clone https://github.com/julia-kim/SouthernArtSoap.git
 cd SouthernArtSoap
 ```
 
-Set the following environment variables:
+Set the following environment variables in application.properties:
 | Variable            | Where                                                  |
 |:--------------------|:-------------------------------------------------------|
 | `STRIPE_PUBLIC_KEY` | Find [here](https://dashboard.stripe.com/test/apikeys) |
