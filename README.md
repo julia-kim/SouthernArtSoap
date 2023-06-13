@@ -46,7 +46,11 @@ git clone https://github.com/julia-kim/SouthernArtSoap.git
 cd SouthernArtSoap
 ```
 
-Set the following environment variables:
+Make a secrets.yml in `src/main/resources/` The secrets.yml contents:
+```
+STRIPE_PUBLIC_KEY: your-public-key
+STRIPE_SECRET_KEY: your-private-key
+```
 | Variable            | Where                                                  |
 |:--------------------|:-------------------------------------------------------|
 | `STRIPE_PUBLIC_KEY` | Find [here](https://dashboard.stripe.com/test/apikeys) |
